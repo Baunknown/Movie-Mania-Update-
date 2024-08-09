@@ -141,15 +141,6 @@
             color: #aaa;
         }
 
-        .episode a {
-            margin-left: auto;
-            text-decoration: none;
-            color: #fff;
-            background-color: #333;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-
         .comment-section textarea {
             width: 100%;
             padding: 10px;
@@ -388,7 +379,6 @@
                             <h3>Episode 1: Pilot</h3>
                             <p>Description of Episode 1</p>
                         </div>
-                        <a href="https://example.com/download/episode-1" target="_blank">Download</a>
                     </div>
                     <div class="episode">
                         <img src="https://via.placeholder.com/150x100?text=Episode+2" alt="Episode 2">
@@ -396,12 +386,11 @@
                             <h3>Episode 2: The Journey</h3>
                             <p>Description of Episode 2</p>
                         </div>
-                        <a href="https://example.com/download/episode-2" target="_blank">Download</a>
                     </div>
                 </div>
                 <div>
-                    <h3>Download</h3>
-                    <a id="item-download-link" href="" target="_blank" class="link-button">Download Now</a>
+                    <h3>Release Date</h3>
+                    <p id="item-release-date"></p>
                 </div>
                 <div class="comment-section">
                     <h3>Comments</h3>
@@ -428,7 +417,7 @@
                 title: 'Despicable Me 4',
                 description: 'The Minions are back in this exciting new adventure.',
                 trailer: 'https://www.youtube.com/embed/LtNYaH61dXY?si=9MsmAQQQd7a4MH7N',
-                downloadLink: 'https://downloadwella.com/4qm6pljohrm9/Despicable.Me.4.(NKIRI.COM).2024.WEBRip.DOWNLOADED.FROM.NKIRI.COM.mkv.html',
+                releaseDate: 'July 3, 2024',
                 poster: 'https://www.dvdsreleasedates.com/posters/300/D/Despicable-Me-4-2024.jpg',
                 type: 'movie'
             },
@@ -436,7 +425,7 @@
                 title: 'MaXXXine',
                 description: 'In 1980s Hollywood, adult film star and aspiring actress Maxine Minx finally gets her big break...',
                 trailer: 'https://www.youtube.com/embed/Y4GMm2-44-4?si=-kimV-5hkj8Nyi--',
-                downloadLink: 'https://downloadwella.com/95j746gkdceo/MaXXXine.(NKIRI.COM).2024.AMZN.WEBRip.DOWNLOADED.FROM.NKIRI.COM.mkv.html',
+                releaseDate: 'October 4, 2024',
                 poster: 'https://www.dvdsreleasedates.com/posters/300/M/MaXXXine-2024.jpg',
                 type: 'movie'
             },
@@ -444,7 +433,7 @@
                 title: 'A Quiet Place: Day One',
                 description: 'As New York City is invaded by alien creatures who hunt by sound...',
                 trailer: 'https://www.youtube.com/embed/Y4GMm2-44-4?si=-kimV-5hkj8Nyi--',
-                downloadLink: 'https://downloadwella.com/95j746gkdceo/A-Quiet-Place-Day-One-2024.mkv.html',
+                releaseDate: 'March 8, 2024',
                 poster: 'https://www.dvdsreleasedates.com/posters/300/A/A-Quiet-Place-Day-One-2024.jpg',
                 type: 'movie'
             },
@@ -454,24 +443,24 @@
                 title: 'House Of Dragon',
                 description: 'Description of TV Series 1.',
                 trailer: 'https://www.youtube.com/embed/xxxxxxx',
-                downloadLink: 'https://example.com/download/tv-series-1',
+                releaseDate: 'August 21, 2022',
                 poster: 'https://www.dvdsreleasedates.com/posters/300/H/House-of-the-Dragon-2022.jpg',
                 type: 'tv-series',
                 episodes: [
-                    { title: 'Episode 1: Pilot', thumbnail: 'https://via.placeholder.com/150x100?text=Episode+1', id: 'episode-1', downloadLink: 'https://downloadwella.com/kb145spp6vnf/The.Boys.S04E01.(NKIRI.COM).mkv.html" target=_blank>The.Boys.S04E01.(NKIRI.COM).mkv' },
-                    { title: 'Episode 2: The Journey', thumbnail: 'https://via.placeholder.com/150x100?text=Episode+2', id: 'episode-2', downloadLink: 'https://example.com/download/episode-2' }
+                    { title: 'Episode 1: Pilot', thumbnail: 'https://via.placeholder.com/150x100?text=Episode+1', id: 'episode-1' },
+                    { title: 'Episode 2: The Journey', thumbnail: 'https://via.placeholder.com/150x100?text=Episode+2', id: 'episode-2' }
                 ]
             },
             'the-boys-s4': {
                 title: 'The Boys S4',
                 description: 'In a world where superheroes exist, a group of vigilantes known as "The Boys" fights back against corrupt heroes...',
                 trailer: 'https://www.youtube.com/embed/xxxxxxx',
-                downloadLink: 'https://example.com/download/the-boys-s4',
+                releaseDate: 'September 22, 2024',
                 poster: 'https://www.dvdsreleasedates.com/posters/300/T/The-Boys-2019.jpg',
                 type: 'tv-series',
                 episodes: [
-                    { title: 'Episode 1: Payback', thumbnail: 'https://via.placeholder.com/150x100?text=Episode+1', id: 'episode-1', downloadLink: 'https://downloadwella.com/kb145spp6vnf/The.Boys.S04E01.(NKIRI.COM).mkv.html' },
-                    { title: 'Episode 2: The Only Man In The Sky', thumbnail: 'https://via.placeholder.com/150x100?text=Episode+2', id: 'episode-2', downloadLink: 'https://example.com/download/episode-2' }
+                    { title: 'Episode 1: Payback', thumbnail: 'https://via.placeholder.com/150x100?text=Episode+1', id: 'episode-1' },
+                    { title: 'Episode 2: The Only Man In The Sky', thumbnail: 'https://via.placeholder.com/150x100?text=Episode+2', id: 'episode-2' }
                 ]
             },
 
@@ -480,7 +469,7 @@
                 title: 'Inside Out 2',
                 description: 'The sequel to the heartwarming story of Riley and her emotions as they navigate new challenges.',
                 trailer: 'https://www.youtube.com/embed/xxxxxxx',
-                downloadLink: 'https://example.com/download/inside-out-2',
+                releaseDate: 'December 20, 2024',
                 poster: 'https://www.dvdsreleasedates.com/posters/300/I/Inside-Out-2-2024.jpg',
                 type: 'digital-release'
             },
@@ -488,7 +477,7 @@
                 title: 'Despicable Me 4',
                 description: 'The Minions return for more fun and mayhem in this digital release.',
                 trailer: 'https://www.youtube.com/embed/LtNYaH61dXY?si=9MsmAQQQd7a4MH7N',
-                downloadLink: 'https://example.com/download/despicable-me-4-digital',
+                releaseDate: 'June 30, 2024',
                 poster: 'https://www.dvdsreleasedates.com/posters/300/D/Despicable-Me-4-2024.jpg',
                 type: 'digital-release'
             },
@@ -496,7 +485,7 @@
                 title: 'Twisters',
                 description: 'A gripping tale of survival as a series of deadly tornadoes devastate the Midwest.',
                 trailer: 'https://www.youtube.com/embed/xxxxxxx',
-                downloadLink: 'https://example.com/download/twisters',
+                releaseDate: 'April 25, 2024',
                 poster: 'https://www.dvdsreleasedates.com/posters/300/T/Twisters-2024.jpg',
                 type: 'digital-release'
             }
@@ -566,7 +555,7 @@
                 document.getElementById('item-title').innerText = item.title;
                 document.getElementById('item-description').innerText = item.description;
                 document.getElementById('item-trailer').src = item.trailer;
-                document.getElementById('item-download-link').href = item.downloadLink;
+                document.getElementById('item-release-date').innerText = item.releaseDate;
                 document.getElementById('item-poster').src = item.poster;
 
                 if (itemType === 'tv-series' && item.episodes) {
@@ -582,9 +571,7 @@
                                 <h3>${episode.title}</h3>
                                 <p>${episode.id}</p>
                             </div>
-                            <a href="${episode.downloadLink}" target="_blank">Download</a>
                         `;
-                        episodeDiv.onclick = () => playEpisode(episode.id);
                         episodeList.appendChild(episodeDiv);
                     });
                 } else {
@@ -593,10 +580,6 @@
 
                 showSection('item-details');
             }
-        }
-
-        function playEpisode(episodeId) {
-            alert('Playing ' + episodeId); // Replace with actual video playback functionality
         }
 
         function submitComment() {
