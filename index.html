@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Movies Mania Update - Your go-to source for the latest movies, TV series, and digital releases.">
+    <meta name="keywords" content="Movies, TV Series, Digital Releases, Reviews, Trailers">
+    <title>Movies Mania Update</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Basic dark theme styles */
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+
+        header,
+        footer {
+            background-color: #1e1e1e;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .link-button {
+            background-color: #333;
+            color: #ffffff;
+            padding: 10px;
+            text-decoration: none;
+            margin: 5px;
+            border-radius: 5px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .link-button:hover {
+            background-color: #555;
+        }
+
+        .search-box {
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .search-box input {
+            padding: 10px;
+            width: 200px;
+        }
+
+        .search-box button {
+            padding: 10px;
+            background-color: #333;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .search-box button:hover {
+            background-color: #555;
+        }
+
+        .item-list {
+            padding: 20px;
+        }
+
+        .item {
+            background-color: #1e1e1e;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            display: inline-block;
+            width: 150px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .item img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+
+        .item h2 {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin: 10px;
+            color: #ffffff;
+            text-decoration: none;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .back-button:hover {
+            background-color: #555;
+        }
+
+        .digital-releases,
+        .about,
+        .policies,
+        .item-details {
+            padding: 20px;
+        }
+
+        .release-item,
+        .episode {
+            background-color: #1e1e1e;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .release-item img,
+        .episode img {
+            margin-right: 10px;
+            width: 100px;
+            border-radius: 5px;
+        }
+
+        .release-item h3,
+        .episode h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .release-item p,
+        .episode p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        .episode a {
+            margin-left: auto;
+            text-decoration: none;
+            color: #fff;
+            background-color: #333;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .comment-section textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .comment-section button {
+            padding: 10px;
+            background-color: #333;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .comment-section button:hover {
+            background-color: #555;
+        }
+
+        footer .social-icons a {
+            color: #ffffff;
+            margin: 0 5px;
+            text-decoration: none;
+        }
+
+        footer .social-icons a:hover {
+            color: #ddd;
+        }
+
+        .pagination {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .pagination a {
+            margin: 0 5px;
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .pagination a:hover {
+            background-color: #555;
+        }
+
+        /* Responsive Navigation Fix */
+        @media screen and (max-width: 600px) {
+            .link-button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .item {
+                width: 100%;
+            }
+        }
+
+        /* Hide unwanted stats */
+        .stats {
+            display: none;
+        }
+
+        /* Special Feature: Hero Section */
+        .hero-section {
+            background-image: url('https://your-special-background-image-url.com');
+            background-size: cover;
+            padding: 60px 20px;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .hero-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .hero-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .hero-section .cta-button {
+            background-color: #ff4500;
+            color: #ffffff;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .hero-section .cta-button:hover {
+            background-color: #ff6347;
+        }
+
+        /* Flexbox for Digital Releases */
+        .digital-releases .release-item {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: calc(50% - 20px);
+            box-sizing: border-box;
+        }
+
+        .digital-releases .release-item img {
+            width: auto;
+            height: 150px;
+            margin-right: 15px;
+        }
+
+        @media screen and (max-width: 600px) {
+            .digital-releases .release-item {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Movies Mania Update</h1>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h2>Welcome to Movies Mania Update</h2>
+            <p>Your ultimate destination for the latest in movies, TV series, and digital releases.</p>
+            <a href="#" class="cta-button" onclick="showSection('movies-list')">Explore Now</a>
+        </div>
+
+        <!-- Home Page -->
+        <div id="home">
+            <a href="#" class="link-button" onclick="showSection('movies-list')">Movies</a>
+            <a href="#" class="link-button" onclick="showSection('tv-series-list')">TV Series</a>
+            <a href="#" class="link-button" onclick="showSection('digital-releases-list')">Digital Releases</a>
+            <a href="#" class="link-button" onclick="showSection('about')">About Us</a>
+        </div>
+
+        <!-- Search Feature -->
+        <div class="search-box">
+            <input type="text" id="search" placeholder="Search...">
+            <button onclick="search()">Search</button>
+        </div>
+
+        <!-- Movies List -->
+        <div id="movies-list" class="item-list" style="display: none;">
+            <a href="#" class="back-button" onclick="showSection('home')">Back to Home</a>
+            <div class="list" id="movies-container">
+                <!-- Movie items dynamically inserted here -->
+                <div class="item" onclick="showItemDetails('despicable-me-4', 'movie')">
+                    <img src="https://www.dvdsreleasedates.com/posters/300/D/Despicable-Me-4-2024.jpg" alt="Despicable Me 4">
+                    <h2>Despicable Me 4</h2>
+                </div>
+                <div class="item" onclick="showItemDetails('maXXXine', 'movie')">
+                    <img src="https://www.dvdsreleasedates.com/posters/300/M/MaXXXine-2024.jpg" alt="MaXXXine">
+                    <h2>MaXXXine</h2>
+                </div>
+                <div class="item" onclick="showItemDetails('a-quiet-place-day-one', 'movie')">
+                    <img src="https://www.dvdsreleasedates.com/posters/300/A/A-Quiet-Place-Day-One-2024.jpg" alt="A Quiet Place: Day One">
+                    <h2>A Quiet Place: Day One</h2>
+                </div>
+            </div>
+            <div class="pagination" id="movies-pagination">
+                <!-- Pagination buttons dynamically inserted here -->
+            </div>
+        </div>
+
+        <!-- TV Series List -->
+        <div id="tv-series-list" class="item-list" style="display: none;">
+            <a href="#" class="back-button" onclick="showSection('home')">Back to Home</a>
+            <div class="list" id="tv-series-container">
+                <!-- TV series items dynamically inserted here -->
+                <div class="item" onclick="showItemDetails('tv-series-1', 'tv-series')">
+                    <img src="https://www.dvdsreleasedates.com/posters/300/H/House-of-the-Dragon-2022.jpg" alt="House Of Dragon">
+                    <h2>House Of Dragon</h2>
+                </div>
+                <div class="item" onclick="showItemDetails('the-boys-s4', 'tv-series')">
+                    <img src="https://www.dvdsreleasedates.com/posters/300/T/The-Boys-Season-4.jpg" alt="The Boys S4">
+                    <h2>The Boys S4</h2>
+                </div>
+            </div>
+            <div class="pagination" id="tv-series-pagination">
+                <!-- Pagination buttons dynamically inserted here -->
+            </div>
+        </div>
+
+        <!-- Digital Releases List -->
+        <div id="digital-releases-list" class="item-list" style="display: none;">
+            <a href="#" class="back-button" onclick="showSection('home')">Back to Home</a>
+            <div class="list" id="digital-releases-container">
+                <!-- Digital releases items dynamically inserted here -->
+                <div class="item" onclick="showItemDetails('inside-out-2', 'digital-release')">
+                    <img src="https://www.dvdsreleasedates.com/posters/300/I/Inside-Out-2-2024.jpg" alt="Inside Out 2">
+                    <h2>Inside Out 2</h2>
+                </div>
+                <div class="item" onclick="showItemDetails('despicable-me-4-digital', 'digital-release')">
+                    <img src="https://www.dvdsreleasedates.com/posters/300/D/Despicable-Me-4-2024.jpg" alt="Despicable Me 4">
+                    <h2>Despicable Me 4</h2>
+                </div>
+                <div class="item" onclick="showItemDetails('twisters', 'digital-release')">
+                    <img src="https://www.dvdsreleasedates.com/posters/300/T/Twisters-2024.jpg" alt="Twisters">
+                    <h2>Twisters</h2>
+                </div>
+            </div>
+            <div class="pagination" id="digital-releases-pagination">
+                <!-- Pagination buttons dynamically inserted here -->
+            </div>
+        </div>
+
+        <!-- About Page -->
+        <div id="about" class="about" style="display: none;">
+            <a href="#" class="back-button" onclick="showSection('home')">Back to Home</a>
+            <h2>About Us</h2>
+            <p>Welcome to Movies Mania Update, your ultimate source for the latest movies, TV series, and digital releases. We provide comprehensive information, trailers, and download links for your favorite films and shows.</p>
+            <h3>Our Policies</h3>
+            <p>Your privacy is important to us. We adhere to strict privacy policies to ensure your information is safe. For more details, read our <a href="#">Privacy Policy</a> and <a href="#">Cookies Policy</a>.</p>
+        </div>
+
+        <!-- Item Details -->
+        <div id="item-details" class="item-details" style="display: none;">
+            <a href="#" class="back-button" onclick="showSection('home')">Back to Home</a>
+            <div id="item-info">
+                <img id="item-poster" src="" alt="Item Poster">
+                <h2 id="item-title"></h2>
+                <p id="item-description"></p>
+                <div>
+                    <h3>Trailer</h3>
+                    <iframe id="item-trailer" width="560" height="315" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div id="episode-list" style="display: none;">
+                    <h3>Episodes</h3>
+                    <div class="episode">
+                        <img src="https://via.placeholder.com/150x100?text=Episode+1" alt="Episode 1">
+                        <div>
+                            <h3>Episode 1: Pilot</h3>
+                            <p>Description of Episode 1</p>
+                        </div>
+                        <a href="https://example.com/download/episode-1" target="_blank">Download</a>
+                    </div>
+                    <div class="episode">
+                        <img src="https://via.placeholder.com/150x100?text=Episode+2" alt="Episode 2">
+                        <div>
+                            <h3>Episode 2: The Journey</h3>
+                            <p>Description of Episode 2</p>
+                        </div>
+                        <a href="https://example.com/download/episode-2" target="_blank">Download</a>
+                    </div>
+                </div>
+                <div>
+                    <h3>Download</h3>
+                    <a id="item-download-link" href="" target="_blank" class="link-button">Download Now</a>
+                </div>
+                <div class="comment-section">
+                    <h3>Comments</h3>
+                    <textarea id="comment-text" rows="4" placeholder="Add your comment..."></textarea>
+                    <button onclick="submitComment()">Submit</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="social-icons">
+            <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+    </footer>
+    <script>
+        const itemsPerPage = 10; // Items to show per page
+
+        const items = {
+            // Movies
+            'despicable-me-4': {
+                title: 'Despicable Me 4',
+                description: 'The Minions are back in this exciting new adventure.',
+                trailer: 'https://www.youtube.com/embed/LtNYaH61dXY?si=9MsmAQQQd7a4MH7N',
+                downloadLink: 'https://downloadwella.com/4qm6pljohrm9/Despicable.Me.4.(NKIRI.COM).2024.WEBRip.DOWNLOADED.FROM.NKIRI.COM.mkv.html',
+                poster: 'https://www.dvdsreleasedates.com/posters/300/D/Despicable-Me-4-2024.jpg',
+                type: 'movie'
+            },
+            'maXXXine': {
+                title: 'MaXXXine',
+                description: 'In 1980s Hollywood, adult film star and aspiring actress Maxine Minx finally gets her big break...',
+                trailer: 'https://www.youtube.com/embed/Y4GMm2-44-4?si=-kimV-5hkj8Nyi--',
+                downloadLink: 'https://downloadwella.com/95j746gkdceo/MaXXXine.(NKIRI.COM).2024.AMZN.WEBRip.DOWNLOADED.FROM.NKIRI.COM.mkv.html',
+                poster: 'https://www.dvdsreleasedates.com/posters/300/M/MaXXXine-2024.jpg',
+                type: 'movie'
+            },
+            'a-quiet-place-day-one': {
+                title: 'A Quiet Place: Day One',
+                description: 'As New York City is invaded by alien creatures who hunt by sound...',
+                trailer: 'https://www.youtube.com/embed/Y4GMm2-44-4?si=-kimV-5hkj8Nyi--',
+                downloadLink: 'https://downloadwella.com/95j746gkdceo/A-Quiet-Place-Day-One-2024.mkv.html',
+                poster: 'https://www.dvdsreleasedates.com/posters/300/A/A-Quiet-Place-Day-One-2024.jpg',
+                type: 'movie'
+            },
+
+            // TV Series
+            'tv-series-1': {
+                title: 'House Of Dragon',
+                description: 'Description of TV Series 1.',
+                trailer: 'https://www.youtube.com/embed/xxxxxxx',
+                downloadLink: 'https://example.com/download/tv-series-1',
+                poster: 'https://www.dvdsreleasedates.com/posters/300/H/House-of-the-Dragon-2022.jpg',
+                type: 'tv-series',
+                episodes: [
+                    { title: 'Episode 1: Pilot', thumbnail: 'https://via.placeholder.com/150x100?text=Episode+1', id: 'episode-1', downloadLink: 'https://example.com/download/episode-1' },
+                    { title: 'Episode 2: The Journey', thumbnail: 'https://via.placeholder.com/150x100?text=Episode+2', id: 'episode-2', downloadLink: 'https://example.com/download/episode-2' }
+                ]
+            },
+            'the-boys-s4': {
+                title: 'The Boys S4',
+                description: 'In a world where superheroes exist, a group of vigilantes known as "The Boys" fights back against corrupt heroes...',
+                trailer: 'https://www.youtube.com/embed/xxxxxxx',
+                downloadLink: 'https://example.com/download/the-boys-s4',
+                poster: 'https://www.dvdsreleasedates.com/posters/300/T/The-Boys-Season-4.jpg',
+                type: 'tv-series',
+                episodes: [
+                    { title: 'Episode 1: Payback', thumbnail: 'https://via.placeholder.com/150x100?text=Episode+1', id: 'episode-1', downloadLink: 'https://example.com/download/episode-1' },
+                    { title: 'Episode 2: The Only Man In The Sky', thumbnail: 'https://via.placeholder.com/150x100?text=Episode+2', id: 'episode-2', downloadLink: 'https://example.com/download/episode-2' }
+                ]
+            },
+
+            // Digital Releases
+            'inside-out-2': {
+                title: 'Inside Out 2',
+                description: 'The sequel to the heartwarming story of Riley and her emotions as they navigate new challenges.',
+                trailer: 'https://www.youtube.com/embed/xxxxxxx',
+                downloadLink: 'https://example.com/download/inside-out-2',
+                poster: 'https://www.dvdsreleasedates.com/posters/300/I/Inside-Out-2-2024.jpg',
+                type: 'digital-release'
+            },
+            'despicable-me-4-digital': {
+                title: 'Despicable Me 4',
+                description: 'The Minions return for more fun and mayhem in this digital release.',
+                trailer: 'https://www.youtube.com/embed/LtNYaH61dXY?si=9MsmAQQQd7a4MH7N',
+                downloadLink: 'https://example.com/download/despicable-me-4-digital',
+                poster: 'https://www.dvdsreleasedates.com/posters/300/D/Despicable-Me-4-2024.jpg',
+                type: 'digital-release'
+            },
+            'twisters': {
+                title: 'Twisters',
+                description: 'A gripping tale of survival as a series of deadly tornadoes devastate the Midwest.',
+                trailer: 'https://www.youtube.com/embed/xxxxxxx',
+                downloadLink: 'https://example.com/download/twisters',
+                poster: 'https://www.dvdsreleasedates.com/posters/300/T/Twisters-2024.jpg',
+                type: 'digital-release'
+            }
+        };
+
+        function showSection(sectionId) {
+            document.querySelectorAll('main > div').forEach(div => {
+                div.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+
+            if (sectionId === 'movies-list') {
+                renderItems('movie', 1); // Render movies when the movie section is shown
+            } else if (sectionId === 'tv-series-list') {
+                renderItems('tv-series', 1); // Render TV series when the TV series section is shown
+            } else if (sectionId === 'digital-releases-list') {
+                renderItems('digital-release', 1); // Render Digital Releases when the section is shown
+            }
+        }
+
+        function renderItems(type, page) {
+            const container = type === 'movie' ? document.getElementById('movies-container') :
+                type === 'tv-series' ? document.getElementById('tv-series-container') :
+                document.getElementById('digital-releases-container');
+
+            const pagination = type === 'movie' ? document.getElementById('movies-pagination') :
+                type === 'tv-series' ? document.getElementById('tv-series-pagination') :
+                document.getElementById('digital-releases-pagination');
+
+            container.innerHTML = '';
+            pagination.innerHTML = '';
+
+            const filteredItems = Object.keys(items).filter(itemId => items[itemId].type === type);
+            const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+            const start = (page - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const currentItems = filteredItems.slice(start, end);
+
+            currentItems.forEach(itemId => {
+                const item = items[itemId];
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('item');
+                itemDiv.onclick = () => showItemDetails(itemId, item.type);
+                itemDiv.innerHTML = `
+                    <img src="${item.poster}" alt="${item.title}">
+                    <h2>${item.title}</h2>
+                `;
+                container.appendChild(itemDiv);
+            });
+
+            for (let i = 1; i <= totalPages; i++) {
+                const pageLink = document.createElement('a');
+                pageLink.href = '#';
+                pageLink.classList.add('link-button');
+                pageLink.innerText = i;
+                pageLink.onclick = () => {
+                    renderItems(type, i);
+                    return false;
+                };
+                pagination.appendChild(pageLink);
+            }
+        }
+
+        function showItemDetails(itemId, itemType) {
+            const item = items[itemId];
+            if (item) {
+                document.getElementById('item-title').innerText = item.title;
+                document.getElementById('item-description').innerText = item.description;
+                document.getElementById('item-trailer').src = item.trailer;
+                document.getElementById('item-download-link').href = item.downloadLink;
+                document.getElementById('item-poster').src = item.poster;
+
+                if (itemType === 'tv-series' && item.episodes) {
+                    const episodeList = document.getElementById('episode-list');
+                    episodeList.style.display = 'block';
+                    episodeList.innerHTML = '<h3>Episodes</h3>';
+                    item.episodes.forEach(episode => {
+                        const episodeDiv = document.createElement('div');
+                        episodeDiv.classList.add('episode');
+                        episodeDiv.innerHTML = `
+                            <img src="${episode.thumbnail}" alt="${episode.title}">
+                            <div>
+                                <h3>${episode.title}</h3>
+                                <p>${episode.id}</p>
+                            </div>
+                            <a href="${episode.downloadLink}" target="_blank">Download</a>
+                        `;
+                        episodeDiv.onclick = () => playEpisode(episode.id);
+                        episodeList.appendChild(episodeDiv);
+                    });
+                } else {
+                    document.getElementById('episode-list').style.display = 'none';
+                }
+
+                showSection('item-details');
+            }
+        }
+
+        function playEpisode(episodeId) {
+            alert('Playing ' + episodeId); // Replace with actual video playback functionality
+        }
+
+        function submitComment() {
+            alert('Comment submitted!');
+        }
+
+        function search() {
+            alert('Search functionality is not implemented yet.');
+        }
+
+        // Initial load of the home section
+        showSection('home');
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
