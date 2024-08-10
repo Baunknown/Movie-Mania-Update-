@@ -291,10 +291,6 @@
             <a href="#" class="back-button" onclick="showSection('home')">Back to Home</a>
             <div class="list" id="movies-container">
                 <!-- Movie items dynamically inserted here -->
-                 <div class="item" onclick="showItemDetails('inside out', 'movie')">
-                    <img src="https://www.dvdsreleasedates.com/posters/300/I/Inside-Out-2015.jpg">
-                    <h2>Inside Out 2</h2>
-                </div>
                 <div class="item" onclick="showItemDetails('despicable-me-4', 'movie')">
                     <img src="https://www.dvdsreleasedates.com/posters/300/D/Despicable-Me-4-2024.jpg" alt="Despicable Me 4">
                     <h2>Despicable Me 4</h2>
@@ -417,22 +413,13 @@
 
         const items = {
             // Movies
-            'inside out': {
-                title: 'Inside out',
-                description: 'Everyone has a story about life, growing up and feeling the pain of losing a friend whose family uprooted and left to parts-unknown. Some can share those feelings of joy, fear, sadness and eagerness from personal experiences.',
-                trailer: 'https://www.youtube.com/embed/yRUAzGQ3nSY?si=FaDZPTO_35W6vdR3',
-                releaseDate: 'June 15, 2015',
-                poster: 'https://www.dvdsreleasedates.com/posters/300/I/Inside-Out-2015.jpg',
-                downloadLink: 'https://drive.google.com/uc?export=download&id=1s4cknQrZZq_HXznO0mjDt5yWs58wNhey',
-                type: 'movie'
-            },
-             'despicable Me 4': {
+            'despicable-me-4': {
                 title: 'Despicable Me 4',
-                description: 'In 1980s Hollywood, adult film star and aspiring actress Maxine Minx finally gets her big break...',
-                trailer: 'https://www.youtube.com/embed/LtNYaH61dXY?si=Mb-W9LHusA1j1tAm',
+                description: 'The Minions are back in this exciting new adventure.',
+                trailer: 'https://www.youtube.com/embed/LtNYaH61dXY?si=9MsmAQQQd7a4MH7N',
                 releaseDate: 'July 3, 2024',
                 poster: 'https://www.dvdsreleasedates.com/posters/300/D/Despicable-Me-4-2024.jpg',
-                downloadLink: 'https://downloadwella.com/95j746gkdceo/MaXXXine.(NKIRI.COM).2024.AMZN.WEBRip.DOWNLOADED.FROM.NKIRI.COM.mkv.html',
+                downloadLink: 'https://downloadwella.com/4qm6pljohrm9/Despicable.Me.4.(NKIRI.COM).2024.WEBRip.DOWNLOADED.FROM.NKIRI.COM.mkv.html',
                 type: 'movie'
             },
             'maXXXine': {
@@ -464,16 +451,15 @@
             },       
             // TV Series
             'tv-series-1': {
-                title: 'House Of Dragon S2',
-                description: 'The "Game of Thrones" prequel is set 200 years before the original series. The series tells the story of a battle over who should succeed the ailing King Viserys Targaryen.',
-                trailer: 'https://www.youtube.com/embed/YN2H_sKcmGw?si=WRl1yI9RO85AkJCJ',
-                releaseDate: 'July 21, 2024',
+                title: 'House Of Dragon',
+                description: 'Description of TV Series 1.',
+                trailer: 'https://www.youtube.com/embed/xxxxxxx',
+                releaseDate: 'August 21, 2022',
                 poster: 'https://www.dvdsreleasedates.com/posters/300/H/House-of-the-Dragon-2022.jpg',
                 type: 'tv-series',
                 episodes: [
-                    { title: 'Episode 1: A son for a Son', id: 'episode-1', downloadLink: 'https://drive.google.com/uc?export=download&id=1VQ7hLwVOazpdKjR4WvEzVtUSYXWxueGG' },
-                    { title: 'Episode 2: Rhaenyra The Cruel', id: 'episode-2', downloadLink: 'https://drive.google.com/uc?export=download&id=1q7Yv9Nlg5ZRS8SkZnD2nzXQST9p_MLkG' }
-                    { title: 'Episode 3: The Burning Mill', id: 'episode-3', downloadLink: 'https://drive.google.com/uc?export=download&id=1q7Yv9Nlg5ZRS8SkZnD2nzXQST9p_MLkG' }
+                    { title: 'Episode 1: Pilot', id: 'episode-1', downloadLink: '#' },
+                    { title: 'Episode 2: The Journey', id: 'episode-2', downloadLink: '#' }
                 ]
             },
             'the-boys-s4': {
@@ -627,6 +613,7 @@
 </body>
 
 </html>
+
 
 
 
