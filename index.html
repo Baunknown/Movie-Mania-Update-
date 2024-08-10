@@ -378,6 +378,10 @@
             <a href="#" class="back-button" onclick="showSection('home')">Back to Home</a>
             <div class="list" id="digital-releases-container">
                 <!-- Digital releases items dynamically inserted here -->
+                <div class="item" onclick="showItemDetails('Bel-Air', 'digital-release')">
+                    <img src="https://www.dvdsreleasedates.com/posters/300/B/Bel-Air-2022.jpg" alt="Be;-Air">
+                    <h2>Bel-Air</h2>
+                </div>
                 <div class="item" onclick="showItemDetails('The Beast Within', 'digital-release')">
                     <img src="https://www.dvdsreleasedates.com/posters/300/T/The-Beast-Within-2024.jpg" alt="The Beast Within">
                     <h2>The Beast Within</h2>
@@ -589,6 +593,14 @@
             },
 
             // Digital Releases
+             'Be;-Air': {
+                title: 'Bel-Air',
+                description: 'Bel Air.',
+                trailer: 'https://www.youtube.com/embed/xZ5J2E_43wY',
+                releaseDate: 'August 15, 2024',
+                poster: 'https://www.dvdsreleasedates.com/posters/300/B/Bel-Air-2022.jpg',
+                type: 'Tv Series Season 3'
+           }, 
              'The Beast Within': {
                 title: 'The Beast Within',
                 description: 'Follows a ten-year-old girl as she starts to question her atypical life in her family\'s fortified compound in rural England, ultimately discovering that once a month, her father turns into a monster.',
