@@ -292,7 +292,7 @@
             <div class="list" id="movies-container">
                 <!-- Movie items dynamically inserted here -->
                 <div class="item" onclick="showItemDetails('inside out', 'movie')">
-                     <img src=https://www.dvdsreleasedates.com/posters/300/I/Inside-Out-2015.jpg"" alt="Inside Out">
+                     <img src=https://www.dvdsreleasedates.com/posters/300/I/Inside-Out-2015.jpg" alt="Inside Out">
                      <h2>Inside Out</h2>
                 </div>
                 <div class="item" onclick="showItemDetails('despicable-me-4', 'movie')">
@@ -421,9 +421,9 @@
                 title: 'Inside Out',
                 description: 'Everyone has a story about life, growing up and feeling the pain of losing a friend whose family uprooted and left to parts-unknown. Some can share those feelings of joy, fear, sadness and eagerness from personal experiences.',
                 trailer: 'https://www.youtube.com/embed/yRUAzGQ3nSY',
-                releaseDate: 'June 19, 2015'
+                releaseDate: 'June 19, 2015',
                 poster:'https://www.dvdsreleasedates.com/posters/300/I/Inside-Out-2015.jpg',
-                downloadLink:"https://drive.google.com/file/d/1s4cknQrZZq_HXznO0mjDt5yWs58wNhey/preview"
+                downloadLink:"https://drive.google.com/file/d/1s4cknQrZZq_HXznO0mjDt5yWs58wNhey/preview",
                 type: 'movie'
              }, 
             'despicable-me-4': {
@@ -515,21 +515,24 @@
             }
         };
 
-        function showSection(sectionId) {
-            document.querySelectorAll('main > div').forEach(div => {
-                div.style.display = 'none';
-            });
-            document.getElementById(sectionId).style.display = 'block';
+      function showSection(sectionId) {
+    document.querySelectorAll('main > div').forEach(div => {
+        div.style.display = 'none';
+    });
+    const section = document.getElementById(sectionId);
+    if(section) {
+        section.style.display = 'block';
+    }
 
-            if (sectionId === 'movies-list') {
-                renderItems('movie', 1); // Render movies when the movie section is shown
-            } else if (sectionId === 'tv-series-list') {
-                renderItems('tv-series', 1); // Render TV series when the TV series section is shown
-            } else if (sectionId === 'digital-releases-list') {
-                renderItems('digital-release', 1); // Render Digital Releases when the section is shown
-            }
-        }
-
+    if (sectionId === 'movies-list') {
+        renderItems('movie', 1); // Render movies when the movie section is shown
+    } else if (sectionId === 'tv-series-list') {
+        renderItems('tv-series', 1); // Render TV series when the TV series section is shown
+    } else if (sectionId === 'digital-releases-list') {
+        renderItems('digital-release', 1); // Render Digital Releases when the section is shown
+    }
+}       
+        
         function renderItems(type, page) {
             const container = type === 'movie' ? document.getElementById('movies-container') :
                 type === 'tv-series' ? document.getElementById('tv-series-container') :
