@@ -312,6 +312,10 @@
             <a href="#" class="back-button" onclick="showSection('home')">Back to Home</a>
             <div class="list" id="movies-container">
                 <!-- Movie items dynamically inserted here -->
+                <div class="item" onclick="showItemDetails('Horizon: An American Saga - Chapter 1', 'movie')">
+                     <img src="https://www.dvdsreleasedates.com/posters/300/H/Horizon-An-American-Saga-2024.jpg" alt="Horizon: An American Saga - Chapter 1">
+                     <h2>Horizon: An American Saga - Chapter 1 (2024)</h2>
+                </div>
                 <div class="item" onclick="showItemDetails('inside out', 'movie')">
                      <img src="https://www.dvdsreleasedates.com/posters/300/I/Inside-Out-2015.jpg" alt="Inside Out">
                      <h2>Inside Out</h2>
@@ -438,6 +442,15 @@
 
         const items = {
             // Movies
+            'horizon-an-american-saga-chapter-1': {
+                title: 'Horizon: An American Saga - Chapter 1',
+                description: 'Follow the story of how the Old West was won—and lost—through the blood, sweat and tears of many. Spanning 15 years before, during and following the Civil War from 1859 to 1874, embark on an emotional journey across a country at war with itself.',
+                trailer: 'https://www.youtube.com/embed/YYsReoZMj1k',
+                releaseDate: 'June 28, 2024',
+                poster:'https://www.dvdsreleasedates.com/posters/300/H/Horizon-An-American-Saga-2024.jpg',
+                downloadLink:"https://downloadwella.com/t673t52dgvwf/Horizon.An.American.Saga.Chapter.1",
+                type: 'movie'
+             }, 
             'inside out': {
                 title: 'Inside Out',
                 description: 'Everyone has a story about life, growing up and feeling the pain of losing a friend whose family uprooted and left to parts-unknown. Some can share those feelings of joy, fear, sadness and eagerness from personal experiences.',
