@@ -291,6 +291,10 @@
             <a href="#" class="back-button" onclick="showSection('home')">Back to Home</a>
             <div class="list" id="movies-container">
                 <!-- Movie items dynamically inserted here -->
+                <div class="item" onclick="showItemDetails('inside out', 'movie')">
+                     <img src=https://www.dvdsreleasedates.com/posters/300/I/Inside-Out-2015.jpg"" alt="Inside Out">
+                     <h2>Inside Out</h2>
+                </div>
                 <div class="item" onclick="showItemDetails('despicable-me-4', 'movie')">
                     <img src="https://www.dvdsreleasedates.com/posters/300/D/Despicable-Me-4-2024.jpg" alt="Despicable Me 4">
                     <h2>Despicable Me 4</h2>
@@ -413,6 +417,15 @@
 
         const items = {
             // Movies
+            'inside out': {
+                title: 'Inside Out',
+                description: 'Everyone has a story about life, growing up and feeling the pain of losing a friend whose family uprooted and left to parts-unknown. Some can share those feelings of joy, fear, sadness and eagerness from personal experiences.',
+                trailer: 'https://www.youtube.com/embed/yRUAzGQ3nSY',
+                releaseDate: 'June 19, 2015'
+                poster:'https://www.dvdsreleasedates.com/posters/300/I/Inside-Out-2015.jpg',
+                downloadLink:"https://drive.google.com/file/d/1s4cknQrZZq_HXznO0mjDt5yWs58wNhey/preview"
+                type: 'movie'
+             }, 
             'despicable-me-4': {
                 title: 'Despicable Me 4',
                 description: 'The Minions are back in this exciting new adventure.',
