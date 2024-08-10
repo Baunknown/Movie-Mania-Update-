@@ -303,12 +303,11 @@
                     <img src="https://www.dvdsreleasedates.com/posters/300/A/A-Quiet-Place-Day-One-2024.jpg" alt="A Quiet Place: Day One">
                     <h2>A Quiet Place: Day One</h2>
                 </div>
+                <div class="item" onclick="showItemDetails('bad-boys-ride-or-die', 'movie')">
+                    <img src="https://www.dvdsreleasedates.com/posters/300/B/Bad-Boys-Ride-or-Die-2024.jpg" alt="Bad Boys: Ride Or Die">
+                    <h2>Bad Boys: Ride Or Die</h2>
+                </div>
             </div>
-            <div class="item" onclick="showItemDetails('bad-boys-ride-or-die', 'movie')">
-                 <img src="https://www.dvdsreleasedates.com/posters/300/B/Bad-Boys-Ride-or-Die-2024.jpg" alt="Bad Boys:Ride Or Die">
-                 <h2>Bad Boys: Ride Or Die</h2>
-            </div>
-         </div>
             <div class="pagination" id="movies-pagination">
                 <!-- Pagination buttons dynamically inserted here -->
             </div>
@@ -377,6 +376,11 @@
                     <iframe id="item-trailer" width="560" height="315" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
 
+                <!-- Download Button -->
+                <div>
+                    <a href="#" class="link-button" id="download-movie">Download Movie</a>
+                </div>
+
                 <!-- Episode List -->
                 <div id="episode-list" style="display: none;">
                     <h3>Episodes</h3>
@@ -415,6 +419,7 @@
                 trailer: 'https://www.youtube.com/embed/LtNYaH61dXY?si=9MsmAQQQd7a4MH7N',
                 releaseDate: 'July 3, 2024',
                 poster: 'https://www.dvdsreleasedates.com/posters/300/D/Despicable-Me-4-2024.jpg',
+                downloadLink: 'https://downloadwella.com/4qm6pljohrm9/Despicable.Me.4.(NKIRI.COM).2024.WEBRip.DOWNLOADED.FROM.NKIRI.COM.mkv.html',
                 type: 'movie'
             },
             'maXXXine': {
@@ -423,6 +428,7 @@
                 trailer: 'https://www.youtube.com/embed/Y4GMm2-44-4?si=-kimV-5hkj8Nyi--',
                 releaseDate: 'October 4, 2024',
                 poster: 'https://www.dvdsreleasedates.com/posters/300/M/MaXXXine-2024.jpg',
+                downloadLink: 'https://downloadwella.com/95j746gkdceo/MaXXXine.(NKIRI.COM).2024.AMZN.WEBRip.DOWNLOADED.FROM.NKIRI.COM.mkv.html',
                 type: 'movie'
             },
             'a-quiet-place-day-one': {
@@ -431,16 +437,18 @@
                 trailer: 'https://www.youtube.com/embed/gjx-iHGXk9Q',
                 releaseDate: 'July 25, 2024',
                 poster: 'https://www.dvdsreleasedates.com/posters/300/A/A-Quiet-Place-Day-One-2024.jpg',
+                downloadLink: 'https://downloadwella.com/4fl9cp5ipwct/A.Quiet.Place.Day.One.(2024).HC.WEBRip.DOWNLOADED.FROM.NKIRI.COM.mkv.html',
                 type: 'movie'
             },
-              'bad-boys-ride-or-die': {
+            'bad-boys-ride-or-die': {
                 title: 'Bad Boys: Ride Or Die',
                 description: 'After their late former Captain is framed, Lowrey and Burnett try to clear his name, only to end up on the run themselves...',
                 trailer: 'https://www.youtube.com/embed/ZTQyMmz-cQE',
                 releaseDate: 'June 7, 2024',
                 poster: 'https://www.dvdsreleasedates.com/posters/300/B/Bad-Boys-Ride-or-Die-2024.jpg',
+                downloadLink: 'https://downloadwella.com/g8jw0ehagktt/Bad.Boys.Ride.Or.Die.(NKIRI.COM).2024.WEBRip.DOWNLOADED.FROM.NKIRI.COM.mkv.html',
                 type: 'movie'
-              },       
+            },       
             // TV Series
             'tv-series-1': {
                 title: 'House Of Dragon',
@@ -561,6 +569,14 @@
                 document.getElementById('item-release-date').innerText = item.releaseDate;
                 document.getElementById('item-poster').src = item.poster;
 
+                // Set download link for movies
+                if (itemType === 'movie') {
+                    document.getElementById('download-movie').href = item.downloadLink;
+                    document.getElementById('download-movie').style.display = 'inline-block';
+                } else {
+                    document.getElementById('download-movie').style.display = 'none';
+                }
+
                 // Render episodes with download buttons if it's a TV series
                 if (itemType === 'tv-series' && item.episodes) {
                     const episodeList = document.getElementById('episode-list');
@@ -597,6 +613,7 @@
 </body>
 
 </html>
+
 
 
 
