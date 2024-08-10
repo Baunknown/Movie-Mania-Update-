@@ -312,7 +312,11 @@
             <a href="#" class="back-button" onclick="showSection('home')">Back to Home</a>
             <div class="list" id="movies-container">
                 <!-- Movie items dynamically inserted here -->
-                <div class="item" onclick="showItemDetails('Horizon: An American Saga - Chapter 1', 'movie')">
+                <div class="item" onclick="showItemDetails('Challengers', 'movie')">
+                     <img src="https://www.dvdsreleasedates.com/posters/300/C/Challengers-2024.jpg" alt="Horizon: Challengers">
+                     <h2>Challengers</h2>
+                </div>
+                <div class="item" onclick="showItemDetails('My Spy', 'movie')">
                      <img src="https://www.dvdsreleasedates.com/posters/300/M/My-Spy-2019.jpg" alt="Horizon: My Spy">
                      <h2>My Spy</h2>
                 </div>
@@ -402,7 +406,7 @@
             <h2>About Us</h2>
             <p>Welcome to Movies Mania Update, your ultimate source for the latest movies, TV series, and digital releases. We provide comprehensive information, trailers, and download links for your favorite films and shows.</p>
             <h3>Our Policies</h3>
-            <p>Your privacy is important to us. We adhere to strict privacy policies to ensure your information is safe. For more details, read our <a href="#">Privacy Policy</a> and <a href="#">Cookies Policy</a>.</p>
+            <p>Your privacy is important to us. We adhere to strict privacy policies to ensure your information is safe. Movie Mania Update does not ownership to the movies or tv show on our site, we respect our users and we are here to bring you close to the movies and tv show you like <a href="#">Privacy Policy</a> and <a href="#">Cookies Policy</a>.</p>
         </div>
 
         <!-- Item Details -->
@@ -454,6 +458,15 @@
 
         const items = {
             // Movies
+            'challengers': {
+                title: 'Challengers',
+                description: 'Tennis player turned coach Tashi has taken her husband, Art, and transformed him into a world-famous Grand Slam champion.',
+                trailer: 'https://www.youtube.com/embed/VobTTbg-te0',
+                releaseDate: 'April 26, 2024',
+                poster:'https://www.dvdsreleasedates.com/posters/300/C/Challengers-2024.jpg',
+                downloadLink:"https://downloadwella.com/6mrlu4mc1grf/Challengers.(NKIRI.COM).2024.AMZN.WEBRip.DOWNLOADED.FROM.NKIRI.COM.mkv.html",
+                type: 'movie'
+             }, 
              'My Spy': {
                 title: 'My Spy',
                 description: 'The CIA only hires the best. Top operative, JJ, has proven that he has the skills needed to be a fantastic spy.',
