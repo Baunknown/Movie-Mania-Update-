@@ -304,6 +304,11 @@
                     <h2>A Quiet Place: Day One</h2>
                 </div>
             </div>
+            <div class="item" onclick="showItemDetails('bad-boys-ride-or-die', 'movie')">
+                 <img src="https://www.dvdsreleasedates.com/posters/300/B/Bad-Boys-Ride-or-Die-2024.jpg" alt="Bad Boys:Ride Or Die">
+                 <h2>Bad Boys: Ride Or Die</h2>
+            </div>
+         </div>
             <div class="pagination" id="movies-pagination">
                 <!-- Pagination buttons dynamically inserted here -->
             </div>
@@ -371,27 +376,18 @@
                     <h3>Trailer</h3>
                     <iframe id="item-trailer" width="560" height="315" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
+
+                <!-- Episode List -->
                 <div id="episode-list" style="display: none;">
                     <h3>Episodes</h3>
-                    <div class="episode">
-                        <img src="https://via.placeholder.com/150x100?text=Episode+1" alt="Episode 1">
-                        <div>
-                            <h3>Episode 1: Pilot</h3>
-                            <p>Description of Episode 1</p>
-                        </div>
-                    </div>
-                    <div class="episode">
-                        <img src="https://via.placeholder.com/150x100?text=Episode+2" alt="Episode 2">
-                        <div>
-                            <h3>Episode 2: The Journey</h3>
-                            <p>Description of Episode 2</p>
-                        </div>
-                    </div>
+                    <!-- Episodes will be dynamically inserted here -->
                 </div>
+                
                 <div>
                     <h3>Release Date</h3>
                     <p id="item-release-date"></p>
                 </div>
+                
                 <div class="comment-section">
                     <h3>Comments</h3>
                     <textarea id="comment-text" rows="4" placeholder="Add your comment..."></textarea>
@@ -432,12 +428,19 @@
             'a-quiet-place-day-one': {
                 title: 'A Quiet Place: Day One',
                 description: 'As New York City is invaded by alien creatures who hunt by sound...',
-                trailer: 'https://www.youtube.com/embed/Y4GMm2-44-4?si=-kimV-5hkj8Nyi--',
-                releaseDate: 'March 8, 2024',
+                trailer: 'https://www.youtube.com/embed/gjx-iHGXk9Q',
+                releaseDate: 'July 25, 2024',
                 poster: 'https://www.dvdsreleasedates.com/posters/300/A/A-Quiet-Place-Day-One-2024.jpg',
                 type: 'movie'
             },
-
+              'bad-boys-ride-or-die': {
+                title: 'Bad Boys: Ride Or Die',
+                description: 'After their late former Captain is framed, Lowrey and Burnett try to clear his name, only to end up on the run themselves...',
+                trailer: 'https://www.youtube.com/embed/ZTQyMmz-cQE',
+                releaseDate: 'June 7, 2024',
+                poster: 'https://www.dvdsreleasedates.com/posters/300/B/Bad-Boys-Ride-or-Die-2024.jpg',
+                type: 'movie'
+              },       
             // TV Series
             'tv-series-1': {
                 title: 'House Of Dragon',
@@ -447,8 +450,8 @@
                 poster: 'https://www.dvdsreleasedates.com/posters/300/H/House-of-the-Dragon-2022.jpg',
                 type: 'tv-series',
                 episodes: [
-                    { title: 'Episode 1: Pilot', thumbnail: 'https://via.placeholder.com/150x100?text=Episode+1', id: 'episode-1' },
-                    { title: 'Episode 2: The Journey', thumbnail: 'https://via.placeholder.com/150x100?text=Episode+2', id: 'episode-2' }
+                    { title: 'Episode 1: Pilot', id: 'episode-1', downloadLink: '#' },
+                    { title: 'Episode 2: The Journey', id: 'episode-2', downloadLink: '#' }
                 ]
             },
             'the-boys-s4': {
@@ -459,8 +462,8 @@
                 poster: 'https://www.dvdsreleasedates.com/posters/300/T/The-Boys-2019.jpg',
                 type: 'tv-series',
                 episodes: [
-                    { title: 'Episode 1: Payback', thumbnail: 'https://via.placeholder.com/150x100?text=Episode+1', id: 'episode-1' },
-                    { title: 'Episode 2: The Only Man In The Sky', thumbnail: 'https://via.placeholder.com/150x100?text=Episode+2', id: 'episode-2' }
+                    { title: 'Episode 1: Payback', id: 'episode-1', downloadLink: '#' },
+                    { title: 'Episode 2: The Only Man In The Sky', id: 'episode-2', downloadLink: '#' }
                 ]
             },
 
@@ -469,7 +472,7 @@
                 title: 'Inside Out 2',
                 description: 'The sequel to the heartwarming story of Riley and her emotions as they navigate new challenges.',
                 trailer: 'https://www.youtube.com/embed/xxxxxxx',
-                releaseDate: 'December 20, 2024',
+                releaseDate: 'August 20, 2024',
                 poster: 'https://www.dvdsreleasedates.com/posters/300/I/Inside-Out-2-2024.jpg',
                 type: 'digital-release'
             },
@@ -558,6 +561,7 @@
                 document.getElementById('item-release-date').innerText = item.releaseDate;
                 document.getElementById('item-poster').src = item.poster;
 
+                // Render episodes with download buttons if it's a TV series
                 if (itemType === 'tv-series' && item.episodes) {
                     const episodeList = document.getElementById('episode-list');
                     episodeList.style.display = 'block';
@@ -566,11 +570,8 @@
                         const episodeDiv = document.createElement('div');
                         episodeDiv.classList.add('episode');
                         episodeDiv.innerHTML = `
-                            <img src="${episode.thumbnail}" alt="${episode.title}">
-                            <div>
-                                <h3>${episode.title}</h3>
-                                <p>${episode.id}</p>
-                            </div>
+                            <h3>${episode.title}</h3>
+                            <a href="${episode.downloadLink}" class="link-button">Download Episode</a>
                         `;
                         episodeList.appendChild(episodeDiv);
                     });
@@ -596,6 +597,7 @@
 </body>
 
 </html>
+
 
 
 
