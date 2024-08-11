@@ -312,12 +312,16 @@
             <a href="#" class="back-button" onclick="showSection('home')">Back to Home</a>
             <div class="list" id="movies-container">
                 <!-- Movie items dynamically inserted here -->
+                <div class="item" onclick="showItemDetails('The Kill Room', 'movie')">
+                     <img src="https://www.dvdsreleasedates.com/posters/300/T/The-Kill-Room-2023.jpg" alt="The Kill Room">
+                     <h2>The Kill Room</h2>
+                </div>
                 <div class="item" onclick="showItemDetails('Challengers', 'movie')">
                      <img src="https://www.dvdsreleasedates.com/posters/300/C/Challengers-2024.jpg" alt="Challengers">
                      <h2>Challengers</h2>
                 </div>
                 <div class="item" onclick="showItemDetails('My Spy', 'movie')">
-                     <img src="https://www.dvdsreleasedates.com/posters/300/M/My-Spy-2019.jpg" alt="Horizon: My Spy">
+                     <img src="https://www.dvdsreleasedates.com/posters/300/M/My-Spy-2019.jpg" alt="My Spy">
                      <h2>My Spy</h2>
                 </div>
                 <div class="item" onclick="showItemDetails('Horizon: An American Saga - Chapter 1', 'movie')">
@@ -462,6 +466,15 @@
 
         const items = {
             // Movies
+             'the kill room': {
+                title: 'The Kill Room',
+                description: 'A hitman, his boss, an art dealer and a money-laundering scheme that accidentally turns the assassin into an overnight avant-garde sensation, one that forces her to play the art world against the underworld.',
+                trailer: 'https://www.youtube.com/embed/Urs2NSkxvEc?si=zyDHzbMTQe4jgNrG',
+                releaseDate: 'September 23, 2023',
+                poster:'https://www.dvdsreleasedates.com/posters/300/T/The-Kill-Room-2023.jpg',
+                downloadLink:"https://downloadwella.com/nl2xr5syru98/The.Kill.Room.(NKIRI.COM).2023.WEBRip.DOWNLOADED.FROM.NKIRI.COM.mkv.html",
+                type: 'movie'
+             }, 
             'challengers': {
                 title: 'Challengers',
                 description: 'Tennis player turned coach Tashi has taken her husband, Art, and transformed him into a world-famous Grand Slam champion.',
