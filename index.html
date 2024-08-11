@@ -312,6 +312,14 @@
             <a href="#" class="back-button" onclick="showSection('home')">Back to Home</a>
             <div class="list" id="movies-container">
                 <!-- Movie items dynamically inserted here -->
+                <div class="item" onclick="showItemDetails('', 'movie')">
+                     <img src="https://www.dvdsreleasedates.com/posters/300/K/Kingdom-of-the-Planet-of-the-Apes-2024.jpg" alt="Kingdom Of The Planet Of Apes">
+                     <h2>Kingdom Of The Planet Of Apes</h2>
+                </div>
+                <div class="item" onclick="showItemDetails('Rebel Moon', 'movie')">
+                     <img src="https://www.dvdsreleasedates.com/posters/300/R/Rebel-Moon-2023.jpg" alt="Rebel Moon">
+                     <h2>Rebel Moon</h2>
+                </div>
                 <div class="item" onclick="showItemDetails('The Kill Room', 'movie')">
                      <img src="https://www.dvdsreleasedates.com/posters/300/T/The-Kill-Room-2023.jpg" alt="The Kill Room">
                      <h2>The Kill Room</h2>
@@ -466,6 +474,24 @@
 
         const items = {
             // Movies
+             'kingdom of the planet of apes': {
+                title: 'kingdom of the planet of apes',
+                description: 'Apes are dominant spies on earth.',
+                trailer: 'https://www.youtube.com/embed/XtFI7SNtVpY?si=dLqNML51H06AtI3j',
+                releaseDate: 'May, 2024',
+                poster:'https://www.dvdsreleasedates.com/posters/300/K/Kingdom-of-the-Planet-of-the-Apes-2024.jpg',
+                downloadLink:"https://downloadwella.com/mmadg2enk7dd/Kingdom.Of.The.Planet.Of.The.Apes.(NKIRI.COM).2024.WEBRip.DOWNLOADED.FROM.NKIRI.COM.mkv.html",
+                type: 'movie'
+             }, 
+            'rebel moon': {
+                title: 'Rebel Moon',
+                description: 'When the ruthless forces of the Motherworld threaten a quiet farming village on a distant moon, a mysterious outsider becomes its best hope for survival.',
+                trailer: 'https://www.youtube.com/embed/fhr3MzT6exg?si=jHZDN4tEeYvExAnB',
+                releaseDate: 'December 21, 2023',
+                poster:'https://www.dvdsreleasedates.com/posters/300/R/Rebel-Moon-2023.jpg',
+                downloadLink:"https://downloadwella.com/oz8cdnn72i0e/Rebel.Moon.Part.One.A.Child.of.Fire.(NKIRI.COM).2023.NF.WEBRip.DOWNLOADED.FROM.NKIRI.COM.mkv.html",
+                type: 'movie'
+             }, 
              'the kill room': {
                 title: 'The Kill Room',
                 description: 'A hitman, his boss, an art dealer and a money-laundering scheme that accidentally turns the assassin into an overnight avant-garde sensation, one that forces her to play the art world against the underworld.',
