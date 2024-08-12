@@ -18,8 +18,7 @@
             padding: 0;
         }
 
-        header,
-        footer {
+        header, footer {
             background-color: #1e1e1e;
             padding: 20px;
             text-align: center;
@@ -108,16 +107,11 @@
             background-color: #555;
         }
 
-        .digital-releases,
-        .about,
-        .policies,
-        .terms,
-        .item-details {
+        .digital-releases, .about, .policies, .terms, .item-details {
             padding: 20px;
         }
 
-        .release-item,
-        .episode {
+        .release-item, .episode {
             background-color: #1e1e1e;
             padding: 10px;
             margin: 10px 0;
@@ -127,21 +121,18 @@
             justify-content: space-between;
         }
 
-        .release-item img,
-        .episode img {
+        .release-item img, .episode img {
             margin-right: 10px;
             width: 100px;
             border-radius: 5px;
         }
 
-        .release-item h3,
-        .episode h3 {
+        .release-item h3, .episode h3 {
             margin: 0;
             font-size: 18px;
         }
 
-        .release-item p,
-        .episode p {
+        .release-item p, .episode p {
             margin: 5px 0 0;
             font-size: 14px;
             color: #aaa;
@@ -306,6 +297,7 @@
     <!-- End of Statcounter Code -->
     <a href="https://statcounter.com/p13012645/?guest=1">View My Stats</a>
 </div>
+
 <body>
     <header>
         <h1>Movies Mania Update</h1>
@@ -421,6 +413,13 @@
                 </div>
             </div>
         </div>
+
+        <!-- Search Results Page -->
+        <div id="search-results" class="item-list" style="display: none;">
+            <a href="#" class="back-button" onclick="goBack()">Back</a>
+            <h2>Search Results</h2>
+            <div id="search-results-container"></div>
+        </div>
     </main>
 
     <footer>
@@ -438,7 +437,15 @@
 
         const items = {
             // New Movies
-            
+             'luca': {
+                title: 'Luca',
+                description: 'Everyone has a story about life, growing up and feeling the pain of losing a friend whose family uprooted and left to parts-unknown. Some can share those feelings of joy, fear, sadness and eagerness from personal experiences.',
+                trailer: 'https://www.youtube.com/embed/mYfJxlgR2jw?si=XBpWsNYD4JyGFu4h',
+                releaseDate: 'June 18, 2021',
+                poster: 'https://www.dvdsreleasedates.com/posters/300/L/Luca-2021.jpg',
+                downloadLink: 'https://downloadwella.com/yzpct9wj5j4w/Luca.(NKIRI.COM).2021.WEB-DL.DOWNLOADED.FROM.NKIRI.COM.mkv.html',
+                type: 'movie'
+            },
             'inside out': {
                 title: 'Inside Out',
                 description: 'Everyone has a story about life, growing up and feeling the pain of losing a friend whose family uprooted and left to parts-unknown. Some can share those feelings of joy, fear, sadness and eagerness from personal experiences.',
@@ -486,7 +493,7 @@
             },
 
             // TV Series
-            'tv-series-1': {
+             'tv-series-1': {
                 title: 'House Of Dragon S2 Complete',
                 description: 'The "Game of Thrones" prequel is set 200 years before the original series. The series tells the story of a battle over who should succeed the ailing King Viserys Targaryen.',
                 trailer: 'https://www.youtube.com/embed/YN2H_sKcmGw',
@@ -536,7 +543,7 @@
                 title: 'The Beast Within',
                 description: 'Follows a ten-year-old girl as she starts to question her atypical life in her family\'s fortified compound in rural England, ultimately discovering that once a month, her father turns into a monster.',
                 trailer: 'https://www.youtube.com/embed/Dxs-QRzXL1c',
-                releaseDate: 'August 13, 2024',
+                releaseDate: 'August 15, 2024',
                 poster: 'https://www.dvdsreleasedates.com/posters/300/T/The-Beast-Within-2024.jpg',
                 type: 'digital-release'
             },
@@ -610,8 +617,8 @@
                 const itemDiv = document.createElement('div');
                 itemDiv.classList.add('item');
                 itemDiv.onclick = () => showItemDetails(itemId, item.type);
-                itemDiv.innerHTML =
-                    `<img src="${item.poster}" alt="${item.title}">
+                itemDiv.innerHTML = `
+                    <img src="${item.poster}" alt="${item.title}">
                     <h2>${item.title}</h2>`;
                 container.appendChild(itemDiv);
             });
@@ -652,8 +659,8 @@
                     item.episodes.forEach(episode => {
                         const episodeDiv = document.createElement('div');
                         episodeDiv.classList.add('episode');
-                        episodeDiv.innerHTML =
-                            `<h3>${episode.title}</h3>
+                        episodeDiv.innerHTML = `
+                            <h3>${episode.title}</h3>
                             <a href="${episode.downloadLink}" class="link-button">Download Episode</a>`;
                         episodeList.appendChild(episodeDiv);
                     });
@@ -683,19 +690,17 @@
                 }
             });
 
-            if (type === 'universal') {
-                displayUniversalSearchResults(searchResults);
-            } else if (Object.keys(searchResults).length === 1) {
-                const itemId = Object.keys(searchResults)[0];
-                showItemDetails(itemId, searchResults[itemId].type);
-            } else if (Object.keys(searchResults).length > 1) {
-                displaySearchResults(searchResults, type);
+            if (Object.keys(searchResults).length > 0) {
+                displaySearchResults(searchResults);
             } else {
                 alert('No results found!');
             }
         }
 
-        function displayUniversalSearchResults(results) {
+        function displaySearchResults(results) {
+            const container = document.getElementById('search-results-container');
+            container.innerHTML = '';
+
             const movieResults = [];
             const tvSeriesResults = [];
             const digitalReleaseResults = [];
@@ -707,15 +712,11 @@
                 if (item.type === 'digital-release') digitalReleaseResults.push(item);
             });
 
-            // Display only up to 2 results from each section
             const limitedResults = {
-                'Movies': movieResults.slice(0, 2),
-                'TV Series': tvSeriesResults.slice(0, 2),
-                'Digital Releases': digitalReleaseResults.slice(0, 2),
+                'Movies': movieResults,
+                'TV Series': tvSeriesResults,
+                'Digital Releases': digitalReleaseResults,
             };
-
-            const container = document.createElement('div');
-            container.classList.add('item-list');
 
             Object.keys(limitedResults).forEach(section => {
                 if (limitedResults[section].length > 0) {
@@ -726,47 +727,16 @@
                     limitedResults[section].forEach(item => {
                         const itemDiv = document.createElement('div');
                         itemDiv.classList.add('item');
-                        itemDiv.onclick = () => showItemDetails(item.title.toLowerCase().replace(/ /g, '-'), item.type);
-                        itemDiv.innerHTML =
-                            `<img src="${item.poster}" alt="${item.title}">
+                        itemDiv.onclick = () => showItemDetails(Object.keys(items).find(key => items[key].title === item.title), item.type);
+                        itemDiv.innerHTML = `
+                            <img src="${item.poster}" alt="${item.title}">
                             <h2>${item.title}</h2>`;
                         container.appendChild(itemDiv);
                     });
                 }
             });
 
-            document.getElementById('home').innerHTML = ''; // Clear home page content
-            document.getElementById('home').appendChild(container); // Display search results
-        }
-
-        function displaySearchResults(results, type) {
-            const container = type === 'movie' ? document.getElementById('movies-container') :
-                type === 'tv-series' ? document.getElementById('tv-series-container') :
-                type === 'digital-release' ? document.getElementById('digital-releases-container') :
-                document.querySelector('.item-list .list');
-
-            const pagination = type === 'movie' ? document.getElementById('movies-pagination') :
-                type === 'tv-series' ? document.getElementById('tv-series-pagination') :
-                type === 'digital-release' ? document.getElementById('digital-releases-pagination') :
-                document.querySelector('.item-list .pagination');
-
-            container.innerHTML = '';
-            pagination.innerHTML = '';
-
-            Object.keys(results).forEach(itemId => {
-                const item = results[itemId];
-                const itemDiv = document.createElement('div');
-                itemDiv.classList.add('item');
-                itemDiv.onclick = () => showItemDetails(itemId, item.type);
-                itemDiv.innerHTML =
-                    `<img src="${item.poster}" alt="${item.title}">
-                    <h2>${item.title}</h2>`;
-                container.appendChild(itemDiv);
-            });
-
-            showSection(type === 'movie' ? 'movies-list' :
-                type === 'tv-series' ? 'tv-series-list' :
-                type === 'digital-release' ? 'digital-releases-list' : 'home');
+            showSection('search-results');
         }
 
         function goBack() {
