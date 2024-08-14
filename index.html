@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Movies Mania Update - Your go-to source for the latest movies, TV series, and digital releases.">
-    <meta name="keywords" content="Movies, TV Series, Digital Releases, Reviews, Trailers">
+    <meta name="keywords" content="Movies, TV Series, Digital Releases, Reviews, Trailers, Music">
     <title>Movies Mania Update</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -278,7 +278,7 @@
 
   gtag('config', 'G-KT4P5TD29N');
 </script>
-       <!-- Default Statcounter code for Movie Mania Update -->
+          <!-- Default Statcounter code for Movie Mania Update -->
 <div id="statcounter" style="display: none;">
     <script type="text/javascript">
     var sc_project=13012645; 
@@ -307,7 +307,7 @@
         <!-- Hero Section -->
         <div class="hero-section">
             <h2>Welcome to Movies Mania Update</h2>
-            <p>Your ultimate destination for the latest in movies, TV series, and digital releases.</p>
+            <p>Your ultimate destination for the latest in movies, TV series, digital releases, and now music.</p>
             <a href="#" class="cta-button" onclick="showSection('movies-list')">Explore Now</a>
         </div>
 
@@ -316,6 +316,7 @@
             <a href="#" class="link-button" onclick="showSection('movies-list')">Movies</a>
             <a href="#" class="link-button" onclick="showSection('tv-series-list')">TV Series</a>
             <a href="#" class="link-button" onclick="showSection('digital-releases-list')">Digital Releases</a>
+            <a href="#" class="link-button" onclick="showSection('music-list')">Music</a> <!-- New Music Section -->
             <a href="#" class="link-button" onclick="showSection('about')">About Us</a>
             <a href="#" class="link-button" onclick="showSection('terms')">Terms and Conditions</a>
 
@@ -359,11 +360,22 @@
             <div class="pagination" id="digital-releases-pagination"></div>
         </div>
 
+        <!-- Music List -->
+        <div id="music-list" class="item-list" style="display: none;">
+            <a href="#" class="back-button" onclick="goBack()">Back</a>
+            <div class="search-box">
+                <input type="text" id="music-search" placeholder="Search Music...">
+                <button onclick="search('music')">Search</button>
+            </div>
+            <div class="list" id="music-container"></div>
+            <div class="pagination" id="music-pagination"></div>
+        </div>
+
         <!-- About Page -->
         <div id="about" class="about" style="display: none;">
             <a href="#" class="back-button" onclick="goBack()">Back</a>
             <h2>About Us</h2>
-            <p>Welcome to Movies Mania Update, your ultimate source for the latest movies, TV series, and digital releases. We provide comprehensive information, trailers, and download links for your favorite films and shows.</p>
+            <p>Welcome to Movies Mania Update, your ultimate source for the latest movies, TV series, digital releases, and now music. We provide comprehensive information, trailers, and download links for your favorite films, shows, and albums.</p>
             <h3>Our Policies</h3>
             <p>Your privacy is important to us. We adhere to strict privacy policies to ensure your information is safe. For more details, read our <a href="#">Privacy Policy</a> and <a href="#">Cookies Policy</a>.</p>
             <p>Additionally, we do not share your data with third parties without your consent, and we implement industry-standard security measures to protect your personal information.</p>
@@ -437,7 +449,7 @@
 
         const items = {
             // New Movies
-             'dune-part-2': {
+            'dune-part-2': {
                 title: 'Dune Part 2',
                 description: 'Follow the mythic journey of Paul Atreides as he unites with Chani and the Fremen while on a path of revenge against the conspirators who destroyed his family.',
                 trailer: 'https://www.youtube.com/embed/Way9Dexny3w?si=6D9vqYf7hZk5j_tp',
@@ -446,8 +458,8 @@
                 downloadLink: 'https://downloadwella.com/4l4s5gt8myoy/Dune.Part.Two.(NKIRI.COM).2024.WEBRip.DOWNLOADED.FROM.NKIRI.COM.mkv.html',
                 type: 'movie'
             },
-              'the-beast-within': {
-                title: 'the beast within',
+            'the-beast-within': {
+                title: 'The Beast Within',
                 description: 'Follows a ten-year-old girl as she starts to question her atypical life in her family\'s fortified compound in rural England, ultimately discovering that once a month, her father turns into a monster.',
                 trailer: 'https://www.youtube.com/embed/Dxs-QRzXL1c',
                 releaseDate: 'August 13, 2024',
@@ -464,7 +476,7 @@
                 downloadLink: 'https://downloadwella.com/axx6kv86tvm3/The.Beast.Within.(NKIRI.COM).2024.WEBRip.DOWNLOADED.FROM.NKIRI.COM.mkv.html',
                 type: 'movie'
             },
-              'fly-me-to-the-moon': {
+            'fly-me-to-the-moon': {
                 title: 'Fly Me To The Moon',
                 description: 'Sparks fly in all directions as marketing maven Kelly Jones, brought in to fix NASAs public image wreaks havoc on Apollo 11 launch director Cole Davis already difficult task of putting a man on the moon.',
                 trailer: 'https://www.youtube.com/embed/lW7enw6mFxs',
@@ -473,7 +485,7 @@
                 downloadLink: 'https://downloadwella.com/p0449nrfjdul/Fly.Me.To.The.Moon.(NKIRI.COM).2024.AMZN.WEBRip.DOWNLOADED.FROM.NKIRI.COM.mkv.html',
                 type: 'movie'
             },
-              'scream': {
+            'scream': {
                 title: 'Scream',
                 description: 'It has been two and a half decades since the town of Woodsboro was rocked by a series of murders. Still, the inhabitants of this small area feel as if the tragedies are so fresh that they could have occurred yesterday.',
                 trailer: 'https://www.youtube.com/embed/beToTslH17s',
@@ -482,7 +494,7 @@
                 downloadLink: 'https://wetafiles.com/a12zfrvov4oc/Scream.(NKIRI.COM).2022.WEBRip.DOWNLOADED.FROM.NKIRI.COM.mkv.html',
                 type: 'movie'
             },
-              'twister': {
+            'twister': {
                 title: 'Twister',
                 description: 'A gripping tale of survival as a series of deadly tornadoes devastate the Midwest.',
                 trailer: 'https://www.youtube.com/embed/Jm27YjLnPHc',
@@ -491,7 +503,7 @@
                 downloadLink: 'https://downloadwella.com/nj0lnpjsd6np/Twisters.(NKIRI.COM).2024.AMZN.WEBRip.DOWNLOADED.FROM.NKIRI.COM.mkv.html',
                 type: 'movie'
             },
-             'luca': {
+            'luca': {
                 title: 'Luca',
                 description: 'Adventures are aplenty for a young boy named Luca and his new best friend Alberto. In a small town by the sea on the Italian Riveria, the friendship between the two blossoms despite the fact that both the same serect.',
                 trailer: 'https://www.youtube.com/embed/mYfJxlgR2jw?si=XBpWsNYD4JyGFu4h',
@@ -500,7 +512,7 @@
                 downloadLink: 'https://downloadwella.com/yzpct9wj5j4w/Luca.(NKIRI.COM).2021.WEB-DL.DOWNLOADED.FROM.NKIRI.COM.mkv.html',
                 type: 'movie'
             },
-            'inside out': {
+            'inside-out': {
                 title: 'Inside Out',
                 description: 'Everyone has a story about life, growing up and feeling the pain of losing a friend whose family uprooted and left to parts-unknown. Some can share those feelings of joy, fear, sadness and eagerness from personal experiences.',
                 trailer: 'https://www.youtube.com/embed/yRUAzGQ3nSY',
@@ -547,7 +559,7 @@
             },
 
             // TV Series
-             'tv-series-1': {
+            'tv-series-1': {
                 title: 'House Of Dragon S2 Complete',
                 description: 'The "Game of Thrones" prequel is set 200 years before the original series. The series tells the story of a battle over who should succeed the ailing King Viserys Targaryen.',
                 trailer: 'https://www.youtube.com/embed/YN2H_sKcmGw',
@@ -593,14 +605,6 @@
                 poster: 'https://www.dvdsreleasedates.com/posters/300/B/Bel-Air-2022.jpg',
                 type: 'digital-release'
             },
-            'the beast within': {
-                title: 'The Beast Within',
-                description: 'Follows a ten-year-old girl as she starts to question her atypical life in her family\'s fortified compound in rural England, ultimately discovering that once a month, her father turns into a monster.',
-                trailer: 'https://www.youtube.com/embed/Dxs-QRzXL1c',
-                releaseDate: 'August 13, 2024',
-                poster: 'https://www.dvdsreleasedates.com/posters/300/T/The-Beast-Within-2024.jpg',
-                type: 'Now Avaliable for Downloads'
-            },
             'inside-out-2': {
                 title: 'Inside Out 2',
                 description: 'The sequel to the heartwarming story of Riley and her emotions as they navigate new challenges.',
@@ -624,9 +628,38 @@
                 releaseDate: 'Now Avaliable for Downloads',
                 poster: 'https://www.dvdsreleasedates.com/posters/300/T/Twisters-2024.jpg',
                 type: 'digital-release'
+            },
+      
+        // New Music Items
+            'the-weeknd-after-hours': {
+                title: 'The Weeknd - After Hours',
+                description: 'The fourth studio album by Canadian singer The Weeknd, featuring hit singles like "Blinding Lights" and "Save Your Tears".',
+                trailer: 'https://www.youtube.com/embed/4NRXx6U8ABQ',
+                releaseDate: 'March 20, 2020',
+                poster: 'https://upload.wikimedia.org/wikipedia/en/thumb/9/92/The_Weeknd_-_After_Hours.png/220px-The_Weeknd_-_After_Hours.png',
+                downloadLink: 'https://example.com/download/the-weeknd-after-hours',
+                type: 'music'
+            },
+            'taylor-swift-folklore': {
+                title: 'Taylor Swift - Folklore',
+                description: 'The eighth studio album by American singer-songwriter Taylor Swift, featuring singles like "Cardigan" and "Exile".',
+                trailer: 'https://www.youtube.com/embed/K-a8s8OLBSE',
+                releaseDate: 'July 24, 2020',
+                poster: 'https://upload.wikimedia.org/wikipedia/en/thumb/f/f8/Taylor_Swift_-_Folklore.png/220px-Taylor_Swift_-_Folklore.png',
+                downloadLink: 'https://example.com/download/taylor-swift-folklore',
+                type: 'music'
+            },
+            'drake-scary-hours-2': {
+                title: 'Drake - Scary Hours 2',
+                description: 'A 3-song EP by Canadian rapper Drake, including the hit "What\'s Next".',
+                trailer: 'https://www.youtube.com/embed/Wqa2TLV4bqg',
+                releaseDate: 'March 5, 2021',
+                poster: 'https://upload.wikimedia.org/wikipedia/en/thumb/1/1f/Drake_-_Scary_Hours_2.png/220px-Drake_-_Scary_Hours_2.png',
+                downloadLink: 'https://example.com/download/drake-scary-hours-2',
+                type: 'music'
             }
         };
-
+      
         function showSection(sectionId) {
             if (sectionId !== currentSection) {
                 historyStack.push(currentSection); // Track the current section before navigating
@@ -645,17 +678,21 @@
                 renderItems('tv-series', 1);
             } else if (sectionId === 'digital-releases-list') {
                 renderItems('digital-release', 1);
+            } else if (sectionId === 'music-list') {
+                renderItems('music', 1);
             }
         }
 
         function renderItems(type, page) {
             const container = type === 'movie' ? document.getElementById('movies-container') :
                 type === 'tv-series' ? document.getElementById('tv-series-container') :
-                document.getElementById('digital-releases-container');
+                type === 'digital-release' ? document.getElementById('digital-releases-container') :
+                document.getElementById('music-container');
 
             const pagination = type === 'movie' ? document.getElementById('movies-pagination') :
                 type === 'tv-series' ? document.getElementById('tv-series-pagination') :
-                document.getElementById('digital-releases-pagination');
+                type === 'digital-release' ? document.getElementById('digital-releases-pagination') :
+                document.getElementById('music-pagination');
 
             container.innerHTML = '';
             pagination.innerHTML = '';
@@ -699,7 +736,7 @@
                 document.getElementById('item-release-date').innerText = item.releaseDate;
                 document.getElementById('item-poster').src = item.poster;
 
-                if (itemType === 'movie') {
+                if (itemType === 'movie' || itemType === 'music') {
                     document.getElementById('download-movie').href = item.downloadLink;
                     document.getElementById('download-movie').style.display = 'inline-block';
                 } else {
@@ -733,7 +770,8 @@
         function search(type) {
             const query = document.getElementById(type === 'movie' ? 'movies-search' :
                 type === 'tv-series' ? 'tv-series-search' :
-                type === 'digital-release' ? 'digital-releases-search' : 'search').value.toLowerCase();
+                type === 'digital-release' ? 'digital-releases-search' :
+                type === 'music' ? 'music-search' : 'search').value.toLowerCase();
 
             const searchResults = {};
 
@@ -758,18 +796,21 @@
             const movieResults = [];
             const tvSeriesResults = [];
             const digitalReleaseResults = [];
+            const musicResults = [];
 
             Object.keys(results).forEach(itemId => {
                 const item = results[itemId];
                 if (item.type === 'movie') movieResults.push(item);
                 if (item.type === 'tv-series') tvSeriesResults.push(item);
                 if (item.type === 'digital-release') digitalReleaseResults.push(item);
+                if (item.type === 'music') musicResults.push(item);
             });
 
             const limitedResults = {
                 'Movies': movieResults,
                 'TV Series': tvSeriesResults,
                 'Digital Releases': digitalReleaseResults,
+                'Music': musicResults
             };
 
             Object.keys(limitedResults).forEach(section => {
@@ -807,6 +848,7 @@
 </body>
 
 </html>
+
 
 
 
