@@ -311,11 +311,44 @@
         <meta name="ppck-ver" content="4eb7f68e3be9ad997b2a2c2b2d67d9d8" />
         <h1>Movie Mania Update</h1>
     </header>
+             <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Title with Hat</title>
+    <style>
+        /* CSS */
+        .movie-title {
+            position: relative;
+            font-size: 50px;
+            font-weight: bold;
+            display: inline-block;
+        }
 
-    <!-- Santa Hat Added Here -->
-    <div class="santa-hat" id="santa-hat">
-        🎅 <span style="font-size: 24px;">Ho Ho Ho!</span>
+        .letter-m {
+            position: relative;
+        }
+
+        .hat {
+            position: absolute;
+            top: -15px;  /* Adjust to position the hat above the M */
+            left: -8px;  /* Adjust to position the hat to the left side of the M */
+            width: 20px; /* Adjust size of the hat */
+            height: 10px; /* Adjust height of the hat */
+            background-color: #000; /* Black hat */
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="movie-title">
+        <span class="letter-m">M</span>ovie
+        <div class="hat"></div>
     </div>
+</body>
+</html>
+ 
 
     <main>
         <!-- Hero Section -->
