@@ -1,80 +1,171 @@
-// Filename: App.tsx
-import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import "./index.css";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Movie Mania Update</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #000;
+      color: #fff;
+      line-height: 1.6;
+    }
+    header {
+      background: url('https://i.ibb.co/5KLtNHL/movies-bg.jpg') no-repeat center center/cover;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      background-color: rgba(0,0,0,0.8);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #00bfff;
+    }
+    .hero-text h1 {
+      font-size: 3rem;
+      color: white;
+      font-weight: bold;
+    }
+    .section {
+      padding: 40px 20px;
+    }
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #00bfff;
+      display: inline-block;
+    }
+    .movies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+    .movie-card {
+      background-color: #111;
+      padding: 10px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .movie-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .movie-card h3 {
+      margin: 10px 0;
+      font-size: 1.1rem;
+    }
+    .movie-card button {
+      margin: 5px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #00bfff;
+      color: white;
+    }
+    footer {
+      background-color: #111;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
 
-const HeroSection = () => (
-  <div className="bg-gradient-to-r from-purple-800 via-purple-900 to-black text-white py-20 text-center">
-    <h1 className="text-5xl font-bold mb-4">🎬 Cinema Release Radar</h1>
-    <p className="text-lg">Discover the latest movie and TV show releases.</p>
-    <div className="mt-6 space-x-4">
-      <Link to="/movies" className="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded">Movies</Link>
-      <Link to="/series" className="bg-green-500 hover:bg-green-700 text-white px-4 py-2 rounded">Series</Link>
-      <Link to="/digital" className="bg-yellow-500 hover:bg-yellow-700 text-white px-4 py-2 rounded">Digital</Link>
+  <nav>
+    <div class="logo"><a href="#">🎬 Movie Mania Update</a></div>
+    <div>
+      <a href="#">Home</a>
+      <a href="#">Movies</a>
+      <a href="#">TV Shows</a>
+      <a href="#">Digital Releases</a>
+      <a href="#">About</a>
     </div>
-  </div>
-);
+  </nav>
 
-const CategorySection = () => (
-  <div className="p-10 text-center">
-    <h2 className="text-2xl font-semibold mb-6">Featured Movies</h2>
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <MovieCard title="Bad Boys 4" />
-      <MovieCard title="Inside Out 2" />
-      <MovieCard title="The Flash" />
+  <header>
+    <div class="hero-text">
+      <h1>Welcome to Movie Mania Update</h1>
+      <p>Stream the latest & best digital releases all in one place</p>
     </div>
-  </div>
-);
+  </header>
 
-const MovieCard = ({ title }: { title: string }) => (
-  <div className="bg-gray-800 p-6 rounded-lg shadow-md">
-    <div className="h-48 bg-gray-700 rounded mb-4 flex items-center justify-center text-white">Poster</div>
-    <h3 className="text-xl font-bold mb-2">{title}</h3>
-    <button className="bg-indigo-500 hover:bg-indigo-700 text-white px-4 py-2 rounded">Download</button>
-  </div>
-);
+  <section class="section">
+    <h2>Featured Movies</h2>
+    <div class="movies-grid">
+      <div class="movie-card">
+        <img src="https://i.ibb.co/ZYW3VTp/badboys.jpg" alt="Bad Boys" />
+        <h3>Bad Boys (2024)</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+      <div class="movie-card">
+        <img src="https://i.ibb.co/qgv2tYt/oppenheimer.jpg" alt="Oppenheimer" />
+        <h3>Oppenheimer</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+      <div class="movie-card">
+        <img src="https://i.ibb.co/DGkBDX3/marvel.jpg" alt="The Marvels" />
+        <h3>The Marvels</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+    </div>
+  </section>
 
-const Movies = () => (
-  <div className="p-10 text-center">
-    <h2 className="text-3xl font-bold mb-6">Movies Page</h2>
-    <p>Coming soon...</p>
-  </div>
-);
+  <section class="section">
+    <h2>Action Series</h2>
+    <div class="movies-grid">
+      <div class="movie-card">
+        <img src="https://i.ibb.co/Jm3kzJw/loki.jpg" alt="Loki" />
+        <h3>Loki - Season 2</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+      <div class="movie-card">
+        <img src="https://i.ibb.co/5xK8JKZ/the-boys.jpg" alt="The Boys" />
+        <h3>The Boys</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+      <div class="movie-card">
+        <img src="https://i.ibb.co/XFgBG6n/halo.jpg" alt="Halo" />
+        <h3>Halo</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+    </div>
+  </section>
 
-const Series = () => (
-  <div className="p-10 text-center">
-    <h2 className="text-3xl font-bold mb-6">TV Series Page</h2>
-    <p>Coming soon...</p>
-  </div>
-);
+  <footer>
+    © 2025 Movie Mania Update. All Rights Reserved. | Designed with ❤️ by Alex
+  </footer>
 
-const Digital = () => (
-  <div className="p-10 text-center">
-    <h2 className="text-3xl font-bold mb-6">Digital Releases</h2>
-    <p>Release dates for digital platforms.</p>
-  </div>
-);
-
-const NotFound = () => (
-  <div className="p-10 text-center">
-    <h2 className="text-3xl font-bold text-red-600">404 - Not Found</h2>
-    <p>The page you're looking for doesn't exist.</p>
-  </div>
-);
-
-export default function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<><HeroSection /><CategorySection /></>} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/series" element={<Series />} />
-        <Route path="/digital" element={<Digital />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Router>
-  );
-}
+</body>
+</html>
 
 
 
