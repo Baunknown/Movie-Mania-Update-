@@ -6,10 +6,9 @@
   <title>Movie Mania Update</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
   <style>
+    /* Basic Reset & Body */
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; padding: 0; box-sizing: border-box;
     }
     body {
       font-family: 'Roboto', sans-serif;
@@ -53,7 +52,6 @@
       text-align: center;
       position: relative;
     }
-    /* Overlay for darkening the image */
     header::before {
       content: '';
       position: absolute;
@@ -61,7 +59,6 @@
       background: rgba(0,0,0,0.7);
       z-index: 0;
     }
-
     .updates-container {
       position: relative;
       z-index: 1;
@@ -94,7 +91,6 @@
       background-color: #00bfff;
       color: #000;
     }
-
     .updates-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -138,26 +134,46 @@
     section.section {
       padding: 40px 20px;
       max-width: 1200px;
-      margin: 0 auto;
+      margin: 0 auto 60px;
     }
     section.section h2 {
       font-size: 2rem;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       border-bottom: 2px solid #00bfff;
       display: inline-block;
     }
-    .movies-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
+
+    /* Horizontal Scroll Container */
+    .scroll-container {
+      position: relative;
+      overflow-x: auto;
+      display: flex;
+      gap: 15px;
+      scroll-behavior: smooth;
+      padding-bottom: 10px;
     }
+    .scroll-container::-webkit-scrollbar {
+      height: 10px;
+    }
+    .scroll-container::-webkit-scrollbar-track {
+      background: #222;
+      border-radius: 10px;
+    }
+    .scroll-container::-webkit-scrollbar-thumb {
+      background: #00bfff;
+      border-radius: 10px;
+    }
+
     .movie-card {
+      flex: 0 0 auto;
+      width: 180px;
       background-color: #111;
       padding: 10px;
       border-radius: 10px;
       text-align: center;
       box-shadow: 0 0 5px #00bfff33;
       transition: box-shadow 0.3s ease;
+      cursor: pointer;
     }
     .movie-card:hover {
       box-shadow: 0 0 15px #00bfffaa;
@@ -169,13 +185,13 @@
       border-radius: 10px;
     }
     .movie-card h3 {
-      margin: 10px 0;
-      font-size: 1.1rem;
+      margin: 10px 0 5px;
+      font-size: 1rem;
       color: #00bfff;
     }
     .movie-card button {
       margin: 5px 5px 0 5px;
-      padding: 8px 12px;
+      padding: 6px 12px;
       border: none;
       border-radius: 5px;
       cursor: pointer;
@@ -183,6 +199,7 @@
       color: white;
       font-weight: 600;
       transition: background-color 0.3s ease;
+      font-size: 0.85rem;
     }
     .movie-card button:hover {
       background-color: #0080c0;
@@ -197,19 +214,6 @@
       margin-top: auto;
     }
 
-    /* Scrollbar styling for updates list */
-    .updates-list::-webkit-scrollbar {
-      width: 8px;
-    }
-    .updates-list::-webkit-scrollbar-track {
-      background: #222;
-      border-radius: 10px;
-    }
-    .updates-list::-webkit-scrollbar-thumb {
-      background: #00bfff;
-      border-radius: 10px;
-    }
-
     @media (max-width: 600px) {
       nav a {
         margin: 0 8px;
@@ -221,6 +225,12 @@
       }
       .updates-list {
         max-height: 280px;
+      }
+      .movie-card {
+        width: 140px;
+      }
+      .movie-card img {
+        height: 200px;
       }
     }
   </style>
@@ -238,95 +248,16 @@
   </nav>
 
   <header>
-    <div class="updates-container">
-      <div class="tabs">
-        <button class="tab-btn active" data-tab="movies">Latest Movies</button>
-        <button class="tab-btn" data-tab="tvseries">Latest TV Series</button>
-        <button class="tab-btn" data-tab="digital">Digital Releases</button>
-      </div>
-      <div class="updates-list" id="movies" style="display: grid;">
-        <!-- Latest Movies Items -->
-        <div class="update-item" title="Bad Boys (2024)">
-          <img src="https://i.ibb.co/ZYW3VTp/badboys.jpg" alt="Bad Boys" />
-          <div class="update-info">
-            <h4>Bad Boys</h4>
-            <p>Release: 2024</p>
-          </div>
-        </div>
-        <div class="update-item" title="Oppenheimer">
-          <img src="https://i.ibb.co/qgv2tYt/oppenheimer.jpg" alt="Oppenheimer" />
-          <div class="update-info">
-            <h4>Oppenheimer</h4>
-            <p>Release: 2023</p>
-          </div>
-        </div>
-        <div class="update-item" title="The Marvels">
-          <img src="https://i.ibb.co/DGkBDX3/marvel.jpg" alt="The Marvels" />
-          <div class="update-info">
-            <h4>The Marvels</h4>
-            <p>Release: 2023</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="updates-list" id="tvseries" style="display: none;">
-        <!-- Latest TV Series Items -->
-        <div class="update-item" title="Loki - Season 2">
-          <img src="https://i.ibb.co/Jm3kzJw/loki.jpg" alt="Loki" />
-          <div class="update-info">
-            <h4>Loki - Season 2</h4>
-            <p>Release: 2024</p>
-          </div>
-        </div>
-        <div class="update-item" title="The Boys">
-          <img src="https://i.ibb.co/5xK8JKZ/the-boys.jpg" alt="The Boys" />
-          <div class="update-info">
-            <h4>The Boys</h4>
-            <p>Release: 2023</p>
-          </div>
-        </div>
-        <div class="update-item" title="Halo">
-          <img src="https://i.ibb.co/XFgBG6n/halo.jpg" alt="Halo" />
-          <div class="update-info">
-            <h4>Halo</h4>
-            <p>Release: 2023</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="updates-list" id="digital" style="display: none;">
-        <!-- Latest Digital Releases -->
-        <div class="update-item" title="Digital Release - Black Panther 2">
-          <img src="https://i.ibb.co/ysLqpyT/black-panther2.jpg" alt="Black Panther 2" />
-          <div class="update-info">
-            <h4>Black Panther 2</h4>
-            <p>Digital Release: 2025-07-15</p>
-          </div>
-        </div>
-        <div class="update-item" title="Digital Release - Avatar 3">
-          <img src="https://i.ibb.co/gVpFH9L/avatar3.jpg" alt="Avatar 3" />
-          <div class="update-info">
-            <h4>Avatar 3</h4>
-            <p>Digital Release: 2025-08-01</p>
-          </div>
-        </div>
-        <div class="update-item" title="Digital Release - Star Wars: New Dawn">
-          <img src="https://i.ibb.co/FJHJL4z/starwars.jpg" alt="Star Wars: New Dawn" />
-          <div class="update-info">
-            <h4>Star Wars: New Dawn</h4>
-            <p>Digital Release: 2025-09-10</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- Your previous updates tabs or welcome section can remain here or removed for brevity -->
   </header>
 
-  <section class="section">
-    <h2>Featured Movies</h2>
-    <div class="movies-grid">
+  <section class="section" id="top-trending">
+    <h2>Top Trending</h2>
+    <div class="scroll-container">
+      <!-- 8 sample trending movies -->
       <div class="movie-card">
         <img src="https://i.ibb.co/ZYW3VTp/badboys.jpg" alt="Bad Boys" />
-        <h3>Bad Boys (2024)</h3>
+        <h3>Bad Boys</h3>
         <button>Watch Trailer</button>
         <button>Download</button>
       </div>
@@ -342,40 +273,189 @@
         <button>Watch Trailer</button>
         <button>Download</button>
       </div>
+      <div class="movie-card">
+        <img src="https://i.ibb.co/ysLqpyT/black-panther2.jpg" alt="Black Panther 2" />
+        <h3>Black Panther 2</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+      <div class="movie-card">
+        <img src="https://i.ibb.co/FJHJL4z/starwars.jpg" alt="Star Wars" />
+        <h3>Star Wars</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+      <div class="movie-card">
+        <img src="https://i.ibb.co/Jm3kzJw/loki.jpg" alt="Loki" />
+        <h3>Loki</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+      <div class="movie-card">
+        <img src="https://i.ibb.co/5xK8JKZ/the-boys.jpg" alt="The Boys" />
+        <h3>The Boys</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+      <div class="movie-card">
+        <img src="https://i.ibb.co/XFgBG6n/halo.jpg" alt="Halo" />
+        <h3>Halo</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
     </div>
   </section>
 
-  <footer>
-    © 2025 Movie Mania Update. All Rights Reserved. | Designed with ❤️ by Alex
-  </footer>
+  <section class="section" id="upcoming-movies">
+    <h2>Upcoming Movies</h2>
+    <div class="scroll-container">
+      <!-- 8 sample upcoming movies -->
+      <div class="movie-card">
+        <img src="https://i.ibb.co/gVpFH9L/avatar3.jpg" alt="Avatar 3" />
+        <h3>Avatar 3</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+      <div class="movie-card">
+        <img src="https://i.ibb.co/ysLqpyT/black-panther2.jpg" alt="Black Panther 2" />
+        <h3>Black Panther 2</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+      <div class="movie-card">
+        <img src="https://i.ibb.co/FJHJL4z/starwars.jpg" alt="Star Wars" />
+        <h3>Star Wars</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+      <div class="movie-card">
+        <img src="https://i.ibb.co/qgv2tYt/oppenheimer.jpg" alt="Oppenheimer" />
+        <h3>Oppenheimer</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+      <div class="movie-card">
+        <img src="https://i.ibb.co/DGkBDX3/marvel.jpg" alt="The Marvels" />
+        <h3>The Marvels</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+      <div class="movie-card">
+        <img src="https://i.ibb.co/5xK8JKZ/the-boys.jpg" alt="The Boys" />
+        <h3>The Boys</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+      <div class="movie-card">
+        <img src="https://i.ibb.co/XFgBG6n/halo.jpg" alt="Halo" />
+        <h3>Halo</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+      <div class="movie-card">
+        <img src="https://i.ibb.co/Jm3kzJw/loki.jpg" alt="Loki" />
+        <h3>Loki</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+    </div>
+  </section>
 
-  <script>
-    // Tab switching logic
-    const tabs = document.querySelectorAll('.tab-btn');
-    const lists = {
-      movies: document.getElementById('movies'),
-      tvseries: document.getElementById('tvseries'),
-      digital: document.getElementById('digital')
-    };
+  <section class="section" id="tv-series">
+    <h2>TV Series</h2>
+    <div class="scroll-container">
+      <!-- 8 sample TV series -->
+      <div class="movie-card">
+        <img src="https://i.ibb.co/Jm3kzJw/loki.jpg" alt="Loki" />
+        <h3>Loki</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+      <div class="movie-card">
+        <img src="https://i.ibb.co/5xK8JKZ/the-boys.jpg" alt="The Boys" />
+        <h3>The Boys</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+      <div class="movie-card">
+        <img src="https://i.ibb.co/XFgBG6n/halo.jpg" alt="Halo" />
+        <h3>Halo</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+      <div class="movie-card">
+        <img src="https://i.ibb.co/qgv2tYt/oppenheimer.jpg" alt="Oppenheimer" />
+        <h3>Oppenheimer</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+      <div class="movie-card">
+        <img src="https://i.ibb.co/DGkBDX3/marvel.jpg" alt="The Marvels" />
+        <h3>The Marvels</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+      <div class="movie-card">
+        <img src="https://i.ibb.co/gVpFH9L/avatar3.jpg" alt="Avatar 3" />
+        <h3>Avatar 3</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+      <div class="movie-card">
+        <img src="https://i.ibb.co/ysLqpyT/black-panther2.jpg" alt="Black Panther 2" />
+        <h3>Black Panther 2</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+      <div class="movie-card">
+        <img src="https://i.ibb.co/FJHJL4z/starwars.jpg" alt="Star Wars" />
+        <h3>Star Wars</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+    </div>
+  </section>
 
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        // Remove active class from all tabs
-        tabs.forEach(t => t.classList.remove('active'));
-        // Add active class to clicked tab
-        tab.classList.add('active');
+  <section class="section" id="top-movies">
+    <h2>Top Movies</h2>
+    <div class="scroll-container">
+      <!-- 8 sample top movies -->
+      <div class="movie-card">
+        <img src="https://i.ibb.co/ysLqpyT/black-panther2.jpg" alt="Black Panther 2" />
+        <h3>Black Panther 2</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+      <div class="movie-card">
+        <img src="https://i.ibb.co/FJHJL4z/starwars.jpg" alt="Star Wars" />
+        <h3>Star Wars</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+      <div class="movie-card">
+        <img src="https://i.ibb.co/ZYW3VTp/badboys.jpg" alt="Bad Boys" />
+        <h3>Bad Boys</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+      <div class="movie-card">
+        <img src="https://i.ibb.co/qgv2tYt/oppenheimer.jpg" alt="Oppenheimer" />
+        <h3>Oppenheimer</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+      <div class="movie-card">
+        <img src="https://i.ibb.co/DGkBDX3/marvel.jpg" alt="The Marvels" />
+        <h3>The Marvels</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
+      </div>
+      <div class="movie-card">
+        <img src="https://i.ibb.co/Jm3kzJw/loki.jpg" alt="Loki" />
+        <h3>Loki</h3>
+        <button>Watch Trailer</button>
+        <button>Download</button>
 
-        // Hide all lists
-        Object.values(lists).forEach(list => list.style.display = 'none');
-
-        // Show the selected list
-        const selected = tab.getAttribute('data-tab');
-        lists[selected].style.display = 'grid';
-      });
-    });
-  </script>
-</body>
-</html>
 
 
 
