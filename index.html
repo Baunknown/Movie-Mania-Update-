@@ -1,223 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Movie Mania Update</title>
+  <meta charset="UTF-8">
+  <title>Movie Details</title>
   <style>
-    :root {
-      --bg-color: #000;
-      --card-bg: #222;
-      --text-color: #fff;
-      --highlight: #f5f5f5;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
     body {
-      margin: 0;
+      background-color: #000;
+      color: white;
       font-family: Arial, sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
+      padding: 2rem;
     }
-
-    header {
-      background-color: #111;
-      padding: 1rem;
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
       text-align: center;
-      font-size: 2rem;
+      margin-bottom: 1rem;
     }
-
-    .section-title {
-      margin: 1.5rem 1rem 0.5rem;
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: var(--highlight);
-    }
-
-    .movie-row {
-      display: flex;
-      overflow-x: auto;
-      padding: 1rem;
-      gap: 1rem;
-      scroll-behavior: smooth;
-    }
-
-    .movie-card {
-      flex: 0 0 auto;
-      background-color: var(--card-bg);
-      border-radius: 8px;
-      width: 180px;
-      text-align: center;
-      padding: 0.5rem;
-      transition: transform 0.3s;
-    }
-
-    .movie-card:hover {
-      transform: scale(1.05);
-    }
-
-    .movie-card img {
+    .video-container iframe {
       width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-
-    .movie-title {
-      margin-top: 0.5rem;
-      font-size: 1rem;
-    }
-
-    nav {
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-      z-index: 100;
-    }
-
-    .menu-toggle {
-      background: none;
+      height: 400px;
       border: none;
-      color: white;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    .dropdown {
-      display: none;
-      flex-direction: column;
-      background-color: #111;
-      padding: 0.5rem;
       border-radius: 8px;
-      position: absolute;
-      top: 2.5rem;
-      left: 0;
     }
-
-    .dropdown a {
+    .buttons {
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    .buttons a {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background-color: #e50914;
       color: white;
-      padding: 0.5rem;
       text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.3s;
     }
-
-    .dropdown a:hover {
-      background-color: #333;
-    }
-
-    .show-menu .dropdown {
-      display: flex;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      header {
-        font-size: 1.5rem;
-      }
-      .section-title {
-        font-size: 1.25rem;
-      }
-      .movie-card {
-        width: 140px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .movie-card {
-        width: 120px;
-      }
-      .movie-title {
-        font-size: 0.9rem;
-      }
+    .buttons a:hover {
+      background-color: #ff1f2e;
     }
   </style>
-  <script>
-    function toggleMenu() {
-      const nav = document.querySelector('nav');
-      nav.classList.toggle('show-menu');
-    }
-  </script>
 </head>
 <body>
-  <nav>
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-    <div class="dropdown">
-      <a href="#home">Home</a>
-      <a href="#movies">Movies</a>
-      <a href="#tv">TV Series</a>
-      <a href="#digital">Digital Releases</a>
-      <a href="#here">Here</a>
+  <div class="container">
+    <h1 id="movie-title">Loading...</h1>
+
+    <div class="video-container">
+      <iframe id="trailer" src="" allowfullscreen></iframe>
     </div>
-  </nav>
 
-  <header id="home">Welcome to Movie Mania Update</header>
-
-  <div class="section" id="movies">
-    <div class="section-title">🎥 Latest Movies</div>
-    <div class="movie-row">
-      <div class="movie-card">
-        <img src="https://www.dvdsreleasedates.com/posters/300/C/Clown-in-a-Cornfield-2025.jpg" alt="Clown in a Cornfield">
-        <div class="movie-title">Clown in a Cornfield</div>
-      </div>
-      <div class="movie-card">
-        <img src="https://resizing.flixster.com/6HdRsMWSN177Co_ezTeoQoRvXeU=/206x305/v2/https://resizing.flixster.com/Dbn-OmfX4s40QPor-DvRu-PEXKo=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2YzZjJkZWRmLTY5YjUtNGFiYi04MDZjLTE5NWI5NDMxN2EzNS5qcGc=" alt="STRAW">
-        <div class="movie-title">STRAW</div>
-      </div>
-      <div class="movie-card">
-        <img src="https://www.dvdsreleasedates.com/posters/300/S/Sinners-2025.jpg" alt="Sinners">
-        <div class="movie-title">Sinners</div>
-      </div>
+    <div class="buttons" id="actions">
+      <!-- Buttons will be inserted here -->
     </div>
   </div>
 
-  <div class="section" id="tv">
-    <div class="section-title">📺 TV Series</div>
-    <div class="movie-row">
-      <div class="movie-card">
-        <img src="https://via.placeholder.com/200x300" alt="TV Show 1">
-        <div class="movie-title">TV Show 1</div>
-      </div>
-    </div>
-  </div>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const movieId = urlParams.get('id');
 
-  <div class="section" id="digital">
-    <div class="section-title">💿 Digital Releases</div>
-    <div class="movie-row">
-      <div class="movie-card">
-        <img src="https://www.dvdsreleasedates.com/posters/300/M/Mickey-17-2025.jpg" alt="Mickey 17">
-        <div class="movie-title">Mickey 17</div>
-      </div>
-      <div class="movie-card">
-        <img src="https://www.dvdsreleasedates.com/posters/300/N/Novocaine-2025.jpg" alt="Novocaine">
-        <div class="movie-title">Novocaine</div>
-      </div>
-      <div class="movie-card">
-        <img src="https://netnaija.xyz/wp-content/uploads/2025/03/Plankton_-The-Movie-2025-Download-NetNaija.xyz_-390x500.webp" alt="Plankton">
-        <div class="movie-title">Plankton</div>
-      </div>
-    </div>
-  </div>
+    // Example data
+    const data = {
+      "clown-in-a-cornfield": {
+        title: "Clown in a Cornfield",
+        trailer: "https://www.youtube.com/embed/YoHD9XEInc0", // Replace with real trailer
+        download: "https://example.com/download/clown-in-a-cornfield",
+        watchOnline: "https://example.com/watch/clown-in-a-cornfield",
+        type: "movie" // can be "tv", "movie", or "digital"
+      },
+      "tv-show-1": {
+        title: "TV Show 1",
+        trailer: "https://www.youtube.com/embed/tgbNymZ7vqY",
+        download: "https://example.com/download/tv-show-1",
+        type: "tv"
+      },
+      "mickey-17": {
+        title: "Mickey 17",
+        trailer: "https://www.youtube.com/embed/5PSNL1qE6VY",
+        type: "digital"
+      }
+    };
 
-  <div class="section" id="here">
-    <div class="section-title">🔥 Updated: Movies, TV Series, and Digital Releases</div>
-    <div class="movie-row">
-      <div class="movie-card">
-        <img src="https://via.placeholder.com/200x300?text=Update+1" alt="Update 1">
-        <div class="movie-title">Latest Update 1</div>
-      </div>
-      <div class="movie-card">
-        <img src="https://via.placeholder.com/200x300?text=Update+2" alt="Update 2">
-        <div class="movie-title">Latest Update 2</div>
-      </div>
-      <div class="movie-card">
-        <img src="https://via.placeholder.com/200x300?text=Update+3" alt="Update 3">
-        <div class="movie-title">Latest Update 3</div>
-      </div>
-    </div>
-  </div>
+    const movie = data[movieId];
+    if (movie) {
+      document.getElementById("movie-title").textContent = movie.title;
+      document.getElementById("trailer").src = movie.trailer;
+
+      const actions = document.getElementById("actions");
+      if (movie.download) {
+        const dl = document.createElement("a");
+        dl.href = movie.download;
+        dl.textContent = "Download";
+        actions.appendChild(dl);
+      }
+      if (movie.watchOnline && movie.type === "movie") {
+        const watch = document.createElement("a");
+        watch.href = movie.watchOnline;
+        watch.textContent = "Watch Online";
+        actions.appendChild(watch);
+      }
+    } else {
+      document.getElementById("movie-title").textContent = "Movie Not Found";
+      document.querySelector(".video-container").style.display = "none";
+    }
+  </script>
 </body>
 </html>
+
 
 
 
