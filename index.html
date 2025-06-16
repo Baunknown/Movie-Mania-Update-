@@ -70,6 +70,46 @@
       font-size: 1rem;
     }
 
+    nav {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 100;
+    }
+
+    .menu-toggle {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .dropdown {
+      display: none;
+      flex-direction: column;
+      background-color: #111;
+      padding: 0.5rem;
+      border-radius: 8px;
+      position: absolute;
+      top: 2.5rem;
+      left: 0;
+    }
+
+    .dropdown a {
+      color: white;
+      padding: 0.5rem;
+      text-decoration: none;
+    }
+
+    .dropdown a:hover {
+      background-color: #333;
+    }
+
+    .show-menu .dropdown {
+      display: flex;
+    }
+
     /* Responsive Design */
     @media (max-width: 768px) {
       header {
@@ -92,41 +132,45 @@
       }
     }
   </style>
+  <script>
+    function toggleMenu() {
+      const nav = document.querySelector('nav');
+      nav.classList.toggle('show-menu');
+    }
+  </script>
 </head>
 <body>
-  <header>Welcome to Movie Mania Update</header>
+  <nav>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <div class="dropdown">
+      <a href="#home">Home</a>
+      <a href="#movies">Movies</a>
+      <a href="#tv">TV Series</a>
+      <a href="#digital">Digital Releases</a>
+    </div>
+  </nav>
 
-  <div class="section">
-    <div class="section-title">🔥 Featured Movies</div>
+  <header id="home">Welcome to Movie Mania Update</header>
+
+  <div class="section" id="movies">
+    <div class="section-title">🎥 Latest Movies</div>
     <div class="movie-row">
       <div class="movie-card">
-        <img src="https://via.placeholder.com/200x300" alt="Movie 1">
-        <div class="movie-title">Featured 1</div>
+        <img src="https://www.dvdsreleasedates.com/posters/300/C/Clown-in-a-Cornfield-2025.jpg" alt="Clown in a Cornfield">
+        <div class="movie-title">Clown in a Cornfield</div>
+      </div>
+      <div class="movie-card">
+        <img src="https://resizing.flixster.com/6HdRsMWSN177Co_ezTeoQoRvXeU=/206x305/v2/https://resizing.flixster.com/Dbn-OmfX4s40QPor-DvRu-PEXKo=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2YzZjJkZWRmLTY5YjUtNGFiYi04MDZjLTE5NWI5NDMxN2EzNS5qcGc=" alt="STRAW">
+        <div class="movie-title">STRAW</div>
+      </div>
+      <div class="movie-card">
+        <img src="https://www.dvdsreleasedates.com/posters/300/S/Sinners-2025.jpg" alt="Sinners">
+        <div class="movie-title">Sinners</div>
       </div>
     </div>
   </div>
 
-  <div class="section">
-    <div class="section-title">🔥 Top Trending</div>
-    <div class="movie-row">
-      <div class="movie-card">
-        <img src="https://via.placeholder.com/200x300" alt="Trending 1">
-        <div class="movie-title">Trending 1</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">⏳ Upcoming Movies</div>
-    <div class="movie-row">
-      <div class="movie-card">
-        <img src="https://via.placeholder.com/200x300" alt="Upcoming 1">
-        <div class="movie-title">Upcoming 1</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
+  <div class="section" id="tv">
     <div class="section-title">📺 TV Series</div>
     <div class="movie-row">
       <div class="movie-card">
@@ -136,37 +180,26 @@
     </div>
   </div>
 
-  <div class="section">
-    <div class="section-title">🌟 Top Movies</div>
+  <div class="section" id="digital">
+    <div class="section-title">💿 Digital Releases</div>
     <div class="movie-row">
       <div class="movie-card">
-        <img src="https://via.placeholder.com/200x300" alt="Top Movie 1">
-        <div class="movie-title">Top Movie 1</div>
+        <img src="https://www.dvdsreleasedates.com/posters/300/M/Mickey-17-2025.jpg" alt="Mickey 17">
+        <div class="movie-title">Mickey 17</div>
       </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">🎬 Movies Showing in Cinemas</div>
-    <div class="movie-row">
       <div class="movie-card">
-        <img src="https://via.placeholder.com/200x300" alt="Cinema Movie 1">
-        <div class="movie-title">Cinema Movie 1</div>
+        <img src="https://www.dvdsreleasedates.com/posters/300/N/Novocaine-2025.jpg" alt="Novocaine">
+        <div class="movie-title">Novocaine</div>
       </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">▶️ Watch Now</div>
-    <div class="movie-row">
       <div class="movie-card">
-        <img src="https://via.placeholder.com/200x300" alt="Watch Now 1">
-        <div class="movie-title">Watch Now 1</div>
+        <img src="https://netnaija.xyz/wp-content/uploads/2025/03/Plankton_-The-Movie-2025-Download-NetNaija.xyz_-390x500.webp" alt="Plankton">
+        <div class="movie-title">Plankton</div>
       </div>
     </div>
   </div>
 </body>
 </html>
+
 
 
 
