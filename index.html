@@ -2,30 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Movie Mania Update</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body {
       font-family: 'Roboto', sans-serif;
       background-color: #000;
       color: #fff;
       line-height: 1.6;
-    }
-    header {
-      background: url('https://i.ibb.co/5KLtNHL/movies-bg.jpg') no-repeat center center/cover;
-      height: 80vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      text-align: center;
     }
     nav {
       display: flex;
       justify-content: space-between;
       padding: 20px;
-      background-color: rgba(0,0,0,0.8);
+      background-color: rgba(0, 0, 0, 0.85);
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -35,19 +34,113 @@
       text-decoration: none;
       margin: 0 15px;
       font-weight: bold;
+      font-size: 1rem;
     }
     nav a:hover {
       color: #00bfff;
     }
-    .hero-text h1 {
-      font-size: 3rem;
-      color: white;
-      font-weight: bold;
+    .logo a {
+      font-size: 1.5rem;
     }
-    .section {
+
+    header {
+      background: url('https://i.ibb.co/5KLtNHL/movies-bg.jpg') no-repeat center center/cover;
+      height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 20px;
+      text-align: center;
+      position: relative;
+    }
+    /* Overlay for darkening the image */
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 0;
+    }
+
+    .updates-container {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: rgba(10,10,10,0.85);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 0 20px #00bfff88;
+    }
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      gap: 20px;
+    }
+    .tab-btn {
+      background-color: transparent;
+      border: 2px solid #00bfff;
+      padding: 10px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #00bfff;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .tab-btn.active,
+    .tab-btn:hover {
+      background-color: #00bfff;
+      color: #000;
+    }
+
+    .updates-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      max-height: 340px;
+      overflow-y: auto;
+      padding-right: 10px;
+    }
+    .update-item {
+      background-color: #111;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 8px #00bfff66;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .update-item:hover {
+      transform: scale(1.05);
+    }
+    .update-item img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+    }
+    .update-info {
+      padding: 10px;
+      text-align: center;
+    }
+    .update-info h4 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+      font-weight: 700;
+      color: #00bfff;
+    }
+    .update-info p {
+      font-size: 0.85rem;
+      color: #ccc;
+    }
+
+    section.section {
       padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    .section h2 {
+    section.section h2 {
       font-size: 2rem;
       margin-bottom: 20px;
       border-bottom: 2px solid #00bfff;
@@ -63,6 +156,11 @@
       padding: 10px;
       border-radius: 10px;
       text-align: center;
+      box-shadow: 0 0 5px #00bfff33;
+      transition: box-shadow 0.3s ease;
+    }
+    .movie-card:hover {
+      box-shadow: 0 0 15px #00bfffaa;
     }
     .movie-card img {
       width: 100%;
@@ -73,27 +171,61 @@
     .movie-card h3 {
       margin: 10px 0;
       font-size: 1.1rem;
+      color: #00bfff;
     }
     .movie-card button {
-      margin: 5px;
+      margin: 5px 5px 0 5px;
       padding: 8px 12px;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       background-color: #00bfff;
       color: white;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
     }
+    .movie-card button:hover {
+      background-color: #0080c0;
+    }
+
     footer {
       background-color: #111;
       padding: 20px;
       text-align: center;
       font-size: 0.9rem;
       color: #aaa;
+      margin-top: auto;
+    }
+
+    /* Scrollbar styling for updates list */
+    .updates-list::-webkit-scrollbar {
+      width: 8px;
+    }
+    .updates-list::-webkit-scrollbar-track {
+      background: #222;
+      border-radius: 10px;
+    }
+    .updates-list::-webkit-scrollbar-thumb {
+      background: #00bfff;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 600px) {
+      nav a {
+        margin: 0 8px;
+        font-size: 0.9rem;
+      }
+      header {
+        height: 60vh;
+        padding: 0 10px;
+      }
+      .updates-list {
+        max-height: 280px;
+      }
     }
   </style>
 </head>
 <body>
-
   <nav>
     <div class="logo"><a href="#">🎬 Movie Mania Update</a></div>
     <div>
@@ -106,9 +238,86 @@
   </nav>
 
   <header>
-    <div class="hero-text">
-      <h1>Welcome to Movie Mania Update</h1>
-      <p>Stream the latest & best digital releases all in one place</p>
+    <div class="updates-container">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="movies">Latest Movies</button>
+        <button class="tab-btn" data-tab="tvseries">Latest TV Series</button>
+        <button class="tab-btn" data-tab="digital">Digital Releases</button>
+      </div>
+      <div class="updates-list" id="movies" style="display: grid;">
+        <!-- Latest Movies Items -->
+        <div class="update-item" title="Bad Boys (2024)">
+          <img src="https://i.ibb.co/ZYW3VTp/badboys.jpg" alt="Bad Boys" />
+          <div class="update-info">
+            <h4>Bad Boys</h4>
+            <p>Release: 2024</p>
+          </div>
+        </div>
+        <div class="update-item" title="Oppenheimer">
+          <img src="https://i.ibb.co/qgv2tYt/oppenheimer.jpg" alt="Oppenheimer" />
+          <div class="update-info">
+            <h4>Oppenheimer</h4>
+            <p>Release: 2023</p>
+          </div>
+        </div>
+        <div class="update-item" title="The Marvels">
+          <img src="https://i.ibb.co/DGkBDX3/marvel.jpg" alt="The Marvels" />
+          <div class="update-info">
+            <h4>The Marvels</h4>
+            <p>Release: 2023</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="updates-list" id="tvseries" style="display: none;">
+        <!-- Latest TV Series Items -->
+        <div class="update-item" title="Loki - Season 2">
+          <img src="https://i.ibb.co/Jm3kzJw/loki.jpg" alt="Loki" />
+          <div class="update-info">
+            <h4>Loki - Season 2</h4>
+            <p>Release: 2024</p>
+          </div>
+        </div>
+        <div class="update-item" title="The Boys">
+          <img src="https://i.ibb.co/5xK8JKZ/the-boys.jpg" alt="The Boys" />
+          <div class="update-info">
+            <h4>The Boys</h4>
+            <p>Release: 2023</p>
+          </div>
+        </div>
+        <div class="update-item" title="Halo">
+          <img src="https://i.ibb.co/XFgBG6n/halo.jpg" alt="Halo" />
+          <div class="update-info">
+            <h4>Halo</h4>
+            <p>Release: 2023</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="updates-list" id="digital" style="display: none;">
+        <!-- Latest Digital Releases -->
+        <div class="update-item" title="Digital Release - Black Panther 2">
+          <img src="https://i.ibb.co/ysLqpyT/black-panther2.jpg" alt="Black Panther 2" />
+          <div class="update-info">
+            <h4>Black Panther 2</h4>
+            <p>Digital Release: 2025-07-15</p>
+          </div>
+        </div>
+        <div class="update-item" title="Digital Release - Avatar 3">
+          <img src="https://i.ibb.co/gVpFH9L/avatar3.jpg" alt="Avatar 3" />
+          <div class="update-info">
+            <h4>Avatar 3</h4>
+            <p>Digital Release: 2025-08-01</p>
+          </div>
+        </div>
+        <div class="update-item" title="Digital Release - Star Wars: New Dawn">
+          <img src="https://i.ibb.co/FJHJL4z/starwars.jpg" alt="Star Wars: New Dawn" />
+          <div class="update-info">
+            <h4>Star Wars: New Dawn</h4>
+            <p>Digital Release: 2025-09-10</p>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -136,36 +345,38 @@
     </div>
   </section>
 
-  <section class="section">
-    <h2>Action Series</h2>
-    <div class="movies-grid">
-      <div class="movie-card">
-        <img src="https://i.ibb.co/Jm3kzJw/loki.jpg" alt="Loki" />
-        <h3>Loki - Season 2</h3>
-        <button>Watch Trailer</button>
-        <button>Download</button>
-      </div>
-      <div class="movie-card">
-        <img src="https://i.ibb.co/5xK8JKZ/the-boys.jpg" alt="The Boys" />
-        <h3>The Boys</h3>
-        <button>Watch Trailer</button>
-        <button>Download</button>
-      </div>
-      <div class="movie-card">
-        <img src="https://i.ibb.co/XFgBG6n/halo.jpg" alt="Halo" />
-        <h3>Halo</h3>
-        <button>Watch Trailer</button>
-        <button>Download</button>
-      </div>
-    </div>
-  </section>
-
   <footer>
     © 2025 Movie Mania Update. All Rights Reserved. | Designed with ❤️ by Alex
   </footer>
 
+  <script>
+    // Tab switching logic
+    const tabs = document.querySelectorAll('.tab-btn');
+    const lists = {
+      movies: document.getElementById('movies'),
+      tvseries: document.getElementById('tvseries'),
+      digital: document.getElementById('digital')
+    };
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Remove active class from all tabs
+        tabs.forEach(t => t.classList.remove('active'));
+        // Add active class to clicked tab
+        tab.classList.add('active');
+
+        // Hide all lists
+        Object.values(lists).forEach(list => list.style.display = 'none');
+
+        // Show the selected list
+        const selected = tab.getAttribute('data-tab');
+        lists[selected].style.display = 'grid';
+      });
+    });
+  </script>
 </body>
 </html>
+
 
 
 
